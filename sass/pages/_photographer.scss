@@ -1,0 +1,116 @@
+.photographer {
+    display: flex;
+    position: relative;
+    height: 313px;
+    border-radius: 5px;
+    background-color: lighten($color-grey, 65%);
+    .contacter {
+        @include button;
+        position: absolute;
+        font-size: 20px;
+        left: 35%;
+        top: 63px;
+        @media only screen and (max-width: 800px) {
+            height: 35px;
+            font-size: 18px;
+            left: 30%;
+            top: inherit;
+            bottom: 40px;
+        }
+    }
+    @media only screen and (max-width: 800px) {
+        position: static;
+        background-color: inherit;
+    }
+}
+
+.photo {
+    display: flex;
+    h2 {
+        font-size: 18px;
+        font-weight: 700;
+        @media only screen and (max-width: 800px) {
+            display: none;
+        }
+    }
+    .trier {
+        @include button;
+        font-size: 18px;
+        margin-left: 20px;
+        margin-top: 8px;
+        i {
+            margin-left: 20px;
+        }
+        @media only screen and (max-width: 800px) {
+            display: none;
+        }
+    }
+}
+
+.prix {
+    position: absolute;
+    background-color: lighten($color-secondary, 15%);
+    width: 376px;
+    height: 70px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    bottom: 0px;
+    right: 36px;
+    @media only screen and (max-width: 800px) {
+        display: none;
+    }
+}
+
+.bground {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+    background-color: rgba(26, 39, 156, 0.4);
+}
+
+.modal {
+    width: 100%;
+    max-width: 500px;
+    background: lighten($color-secondary, 15px);
+    border-radius: 3px;
+    overflow: hidden;
+    position: relative;
+    color: #fff;
+    &-body {
+        padding: 15px 8%;
+        margin: 15px auto; 
+    }
+}
+
+.close {
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    width: 32px;
+    height: 32px;
+    opacity: 1;
+    cursor: pointer;
+    transform: scale(0.7);
+}
+
+.close:before,
+.close:after {
+position: absolute;
+left: 15px;
+content: " ";
+height: 33px;
+width: 3px;
+background-color: #fff;
+}
+
+.close:before {
+    transform: rotate(45deg);
+}
+.close:after {
+    transform: rotate(-45deg);
+}

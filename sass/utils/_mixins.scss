@@ -1,0 +1,27 @@
+@mixin button {
+    width: 170px;
+    height: 69px;
+    border-radius: 5px 5px 5px 5px;
+    border: none;
+    background-color: $color-primary;
+    color: $color-white;
+    cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 700;
+    &:hover {
+        background-color: $color-secondary;
+        color: black;
+    }
+}
+
+@mixin tag {
+    width: auto;
+    height: 1.375em;
+    border-radius: 1.8em 1.8em 1.8em 1.8em;
+    color: $color-white;
+    border-color: $color-grey;
+    &:hover {
+        color: $color-primary;
+        border-color: $color-primary;
+    }
+}

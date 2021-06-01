@@ -1,0 +1,19 @@
+header {
+    height: 150px;
+}
+
+.logo {
+    position: absolute;
+    left: 100px;
+    top: 42px;
+    img {
+        width: 200px;
+        @media only screen and (max-width: 800px) {
+            width: 150px;
+        }
+    }
+    @media only screen and (max-width: 800px) {
+        left: 20px;
+        top: 40px;
+    }
+}

@@ -1,0 +1,12 @@
+html {
+    margin-left: 4%;
+    margin-right: 4%;
+    @media only screen and (max-width: 800px) {
+        margin: 0;
+    }
+}
+
+body {
+    margin: 0;
+    justify-content: center;
+}
