@@ -13,6 +13,7 @@ fetch("./javascript/json/data.json")
         let i = 0;
         for (const photographe of photographes) {
             let myArticle = document.createElement('article');
+            let myLink = document.createElement('a')
             let myImg = document.createElement('img');
             let myH2 = document.createElement('h2');
             let myH3 = document.createElement('h3');
@@ -34,6 +35,7 @@ fetch("./javascript/json/data.json")
 
             myPara2.classList.add("price");
 
+            myLink.href = "./html/photographer-page.html";
             myImg.src = "images/Photographers/" + data.photographers[i].portrait;
             myH2.textContent = data.photographers[i].name;
             myH3.textContent = data.photographers[i].city + ", " + data.photographers[i].country;
@@ -41,8 +43,9 @@ fetch("./javascript/json/data.json")
             myPara2.textContent = data.photographers[i].price + "€/jour";
 
             bground.appendChild(myArticle);
-            myArticle.appendChild(myImg);
-            myArticle.appendChild(myH2);
+            myArticle.appendChild(myLink);
+            myLink.appendChild(myImg);
+            myLink.appendChild(myH2);
             myArticle.appendChild(myH3);
             myArticle.appendChild(myPara1);
             myArticle.appendChild(myPara2);

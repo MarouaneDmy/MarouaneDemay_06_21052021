@@ -65,16 +65,19 @@ article {
     text-align: center;
     width: 450px;
     margin-bottom: 50px;
-    img {
-        border-radius: 100px;
-        width: 200px;
-        height: 200px;
-    }
-    h2 {
-        color: $color-secondary;
-        margin-top: 10px;
-        margin-bottom: 0px;
-    }
+    a {
+        text-decoration: none;
+        img {
+            border-radius: 100px;
+            width: 200px;
+            height: 200px;
+        }
+        h2 {
+            color: $color-secondary;
+            margin-top: 10px;
+            margin-bottom: 0px;
+        }
+    }    
     h3 {
         color: lighten($color-primary, 8%);
         margin-top: 0px;

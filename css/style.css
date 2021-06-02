@@ -145,12 +145,15 @@ article {
   width: 450px;
   margin-bottom: 50px;
 }
-article img {
+article a {
+  text-decoration: none;
+}
+article a img {
   border-radius: 100px;
   width: 200px;
   height: 200px;
 }
-article h2 {
+article a h2 {
   color: #D3573C;
   margin-top: 10px;
   margin-bottom: 0px;
