@@ -1,7 +1,7 @@
 h1 {
     position: absolute;
     right: 117px;
-    top: 44px;
+    top: 30px;
     color: $color-primary;
     @media only screen and (max-width: 800px) {
         font-size: 14px;
@@ -10,11 +10,52 @@ h1 {
     }
 }
 
+.tagList {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 55px;
+    margin-right: 50px;
+    @media only screen and (max-width: 1600px) {
+        margin-top: 120px;
+    }
+    @media only screen and (max-width: 800px) {
+        margin-right: 0px;
+    }
+    p {
+        @media only screen and (max-width: 800px) {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            width: 500px;
+        }
+    }
+}
+
+.tags {
+    color: lighten($color-primary, 5%);
+    font-family: 'DM Sans';
+    font-weight: bold;
+    border: 0.5px solid lighten($color-grey, 55%);
+    border-radius: 30px;
+    padding-left: 6px;
+    padding-right: 6px;
+    margin: 3px;
+    &:hover {
+        border-color: $color-primary;
+        background-color: $color-primary;
+        color: $color-white;
+    }
+}
+
 .photographes {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     margin-top: 60px;
+    @media only screen and (max-width: 800px) {
+        justify-content: center;
+    }
 }
 
 article {
@@ -50,21 +91,11 @@ article {
         margin-top: 3px;
         margin-bottom: 5px;
     }
-    .tags {
-        color: lighten($color-primary, 5%);
-        font-family: 'DM Sans';
-        font-weight: bold;
-        border: 0.5px solid lighten($color-grey, 55%);
-        border-radius: 30px;
-        padding-left: 6px;
-        padding-right: 6px;
-        margin: 3px;
-        &:hover {
-            border-color: $color-primary;
-            background-color: $color-primary;
-            color: $color-white;
-        }
+    @media only screen and (max-width: 1600px) {
+        width: 350px;
     }
 }
+
+
 
 

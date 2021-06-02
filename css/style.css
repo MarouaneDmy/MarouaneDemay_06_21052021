@@ -44,7 +44,9 @@ p {
 }
 
 header {
+  display: flex;
   height: 150px;
+  justify-content: center;
 }
 
 .logo {
@@ -70,7 +72,7 @@ header {
 h1 {
   position: absolute;
   right: 117px;
-  top: 44px;
+  top: 30px;
   color: #901C1C;
 }
 @media only screen and (max-width: 800px) {
@@ -81,11 +83,58 @@ h1 {
   }
 }
 
+.tagList {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 55px;
+  margin-right: 50px;
+}
+@media only screen and (max-width: 1600px) {
+  .tagList {
+    margin-top: 120px;
+  }
+}
+@media only screen and (max-width: 800px) {
+  .tagList {
+    margin-right: 0px;
+  }
+}
+@media only screen and (max-width: 800px) {
+  .tagList p {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 500px;
+  }
+}
+
+.tags {
+  color: #a52020;
+  font-family: "DM Sans";
+  font-weight: bold;
+  border: 0.5px solid #dedede;
+  border-radius: 30px;
+  padding-left: 6px;
+  padding-right: 6px;
+  margin: 3px;
+}
+.tags:hover {
+  border-color: #901C1C;
+  background-color: #901C1C;
+  color: #FAFAFA;
+}
+
 .photographes {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   margin-top: 60px;
+}
+@media only screen and (max-width: 800px) {
+  .photographes {
+    justify-content: center;
+  }
 }
 
 article {
@@ -122,20 +171,10 @@ article .price {
   margin-top: 3px;
   margin-bottom: 5px;
 }
-article .tags {
-  color: #a52020;
-  font-family: "DM Sans";
-  font-weight: bold;
-  border: 0.5px solid #dedede;
-  border-radius: 30px;
-  padding-left: 6px;
-  padding-right: 6px;
-  margin: 3px;
-}
-article .tags:hover {
-  border-color: #901C1C;
-  background-color: #901C1C;
-  color: #FAFAFA;
+@media only screen and (max-width: 1600px) {
+  article {
+    width: 350px;
+  }
 }
 
 .photographer {

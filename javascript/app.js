@@ -1,5 +1,10 @@
 const bground = document.querySelector(".photographes");
-const navTag = document.querySelector(".tags");
+const navTag = document.querySelector(".tagList");
+let tagList = [];
+
+function strUcFirst(a) {
+    return (a+'').charAt(0).toUpperCase()+a.substr(1);
+}
 
 fetch("./javascript/json/data.json")
     .then(res => res.json())
@@ -15,15 +20,15 @@ fetch("./javascript/json/data.json")
             let myPara2 = document.createElement('p');
             let myPara3 = document.createElement('p');
             let myTags;
-            let tagList = [];
 
             const tags = data.photographers[i].tags;
             let e = 0;
             for (const tag of tags) {
                 myTags = document.createElement('span');
                 myTags.textContent = "#" + data.photographers[i].tags[e];
-                myPara3.appendChild(myTags)
-                myTags.classList.add("tags")
+                tagList.push(data.photographers[i].tags[e]);
+                myPara3.appendChild(myTags);
+                myTags.classList.add("tags");
                 e += 1
             }
 
@@ -35,13 +40,32 @@ fetch("./javascript/json/data.json")
             myPara1.textContent = data.photographers[i].tagline;
             myPara2.textContent = data.photographers[i].price + "€/jour";
 
-            bground.appendChild(myArticle)
-            myArticle.appendChild(myImg)
-            myArticle.appendChild(myH2)
-            myArticle.appendChild(myH3)
-            myArticle.appendChild(myPara1)
-            myArticle.appendChild(myPara2)
-            myArticle.appendChild(myPara3)
+            bground.appendChild(myArticle);
+            myArticle.appendChild(myImg);
+            myArticle.appendChild(myH2);
+            myArticle.appendChild(myH3);
+            myArticle.appendChild(myPara1);
+            myArticle.appendChild(myPara2);
+            myArticle.appendChild(myPara3);
             i += 1
+        }       
+        let myPara1 = document.createElement('p');
+        let myTags;
+
+        const filterTagList = [...new Set(tagList)];
+        let e = 0;
+        for (const tag of filterTagList) {
+            myTags = document.createElement('span');
+            myTags.textContent = "#" + strUcFirst(filterTagList[e]);
+            myPara1.appendChild(myTags);
+            myTags.classList.add("tags");
+            e += 1
         }
-    })
+
+        navTag.appendChild(myPara1);
+
+        
+        console.log(filterTagList);
+    }
+)
+
