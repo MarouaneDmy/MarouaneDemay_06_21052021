@@ -1,7 +1,6 @@
 // DOM Elements
 const bground = document.querySelector(".photographes")
 const navTag = document.querySelector(".tagList")
-const accueil = document.querySelector([href="/index.html"])
 let tagList = []
 
 // Transforme la première lettre en majuscule
@@ -12,7 +11,7 @@ function strUcFirst(a) {
 // Prends les informations du fichier data.json
 async function getData() {
     let reponse = await fetch("./javascript/json/data.json")
-    let data = await reponse.json();
+    let data = await reponse.json()
     return data
 }
 
@@ -78,6 +77,17 @@ function filterTagList() {
     navTag.appendChild(myPara1)
 }
 
+async function pageAccueil() {
+    
+    const data = await getData()
+    let i = 0
+
+    getPhotographer(data, i)
+
+    filterTagList()     
+    
+}
+
 function getId() { 
 
     window.onload = function() {
@@ -92,15 +102,6 @@ function getId() {
     } 
 } 
 
-async function pageAccueil() {
-    
-    const data = await getData()
-    let i = 0
 
-    getPhotographer(data, i)
-
-    filterTagList()     
-    
-}
 
 export { pageAccueil }
