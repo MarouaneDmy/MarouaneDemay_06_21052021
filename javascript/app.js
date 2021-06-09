@@ -1,12 +1,18 @@
-const bground = document.querySelector(".photographes");
-const navTag = document.querySelector(".tagList");
-let tagList = [];
+import * as baseFuncs from "./baseFuncs.js"
 
-function strUcFirst(a) {
-    return (a+'').charAt(0).toUpperCase()+a.substr(1);
-}
+baseFuncs.pageAccueil()
 
-fetch("./javascript/json/data.json")
+    
+
+
+
+
+
+
+
+
+// Prends les informations du fichier data.json
+/* fetch("./javascript/json/data.json")
     .then(res => res.json())
     .then(data => {
         const photographes = data.photographers;
@@ -35,7 +41,7 @@ fetch("./javascript/json/data.json")
 
             myPara2.classList.add("price");
 
-            myLink.href = "./html/photographer-page.html";
+            myLink.href = "./html/photographer-page.html?id=" + data.photographers[i].id;
             myImg.src = "images/Photographers/" + data.photographers[i].portrait;
             myH2.textContent = data.photographers[i].name;
             myH3.textContent = data.photographers[i].city + ", " + data.photographers[i].country;
@@ -64,11 +70,7 @@ fetch("./javascript/json/data.json")
             myTags.classList.add("tags");
             e += 1
         }
-
         navTag.appendChild(myPara1);
-
-        
-        console.log(filterTagList);
     }
-)
+) */
 

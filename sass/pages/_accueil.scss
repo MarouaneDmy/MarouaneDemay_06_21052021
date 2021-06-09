@@ -1,7 +1,7 @@
 h1 {
     position: absolute;
     right: 117px;
-    top: 30px;
+    top: 32px;
     color: $color-primary;
     @media only screen and (max-width: 800px) {
         font-size: 14px;
@@ -27,7 +27,7 @@ h1 {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            width: 500px;
+            width: 400px;
         }
     }
 }
@@ -71,6 +71,7 @@ article {
             border-radius: 100px;
             width: 200px;
             height: 200px;
+            object-fit: cover;
         }
         h2 {
             color: $color-secondary;

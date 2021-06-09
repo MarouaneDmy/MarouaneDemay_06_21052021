@@ -72,7 +72,7 @@ header {
 h1 {
   position: absolute;
   right: 117px;
-  top: 30px;
+  top: 32px;
   color: #901C1C;
 }
 @media only screen and (max-width: 800px) {
@@ -105,7 +105,7 @@ h1 {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    width: 500px;
+    width: 400px;
   }
 }
 
@@ -152,6 +152,7 @@ article a img {
   border-radius: 100px;
   width: 200px;
   height: 200px;
+  object-fit: cover;
 }
 article a h2 {
   color: #D3573C;
@@ -180,14 +181,14 @@ article .price {
   }
 }
 
-.photographer {
+.photographe {
   display: flex;
   position: relative;
   height: 313px;
   border-radius: 5px;
   background-color: #f8f8f8;
 }
-.photographer .contacter {
+.photographe .contacter {
   width: 170px;
   height: 69px;
   border-radius: 5px 5px 5px 5px;
@@ -202,12 +203,12 @@ article .price {
   left: 35%;
   top: 63px;
 }
-.photographer .contacter:hover {
+.photographe .contacter:hover {
   background-color: #D3573C;
   color: black;
 }
 @media only screen and (max-width: 800px) {
-  .photographer .contacter {
+  .photographe .contacter {
     height: 35px;
     font-size: 18px;
     left: 30%;
@@ -216,7 +217,7 @@ article .price {
   }
 }
 @media only screen and (max-width: 800px) {
-  .photographer {
+  .photographe {
     position: static;
     background-color: inherit;
   }
