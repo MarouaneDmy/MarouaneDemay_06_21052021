@@ -10,14 +10,14 @@ function strUcFirst(a) {
 
 // Prends les informations du fichier data.json
 async function getData() {
-    let reponse = await fetch("./javascript/json/data.json")
-    let data = await reponse.json()
+    let response = await fetch("./javascript/json/data.json")
+    let data = await response.json()
     return data
 }
 
-function getPhotographer(data, i) {
-    const photographes = data.photographers
-    for (const photographe of photographes) {
+// Fais apparaître l'image et autres paramètres de chaque photographe
+function displayPhotographer(data) {
+    for (const photographe of data.photographers) {
         let myArticle = document.createElement('article')
         let myLink = document.createElement('a')
         let myImg = document.createElement('img')
@@ -28,25 +28,22 @@ function getPhotographer(data, i) {
         let myPara3 = document.createElement('p')
         let myTags
 
-        const tags = data.photographers[i].tags
-        let e = 0
-        for (const tag of tags) {
+        for (const [i, tag] of photographe.tags.entries()) {
             myTags = document.createElement('span')
-            myTags.textContent = "#" + data.photographers[i].tags[e]
-            tagList.push(data.photographers[i].tags[e])
+            myTags.textContent = "#" + photographe.tags[i]
+            tagList.push(photographe.tags[i])
             myPara3.appendChild(myTags)
             myTags.classList.add("tags")
-            e += 1
         }
 
         myPara2.classList.add("price")
 
-        myLink.href = "./html/photographer-page.html?id=" + data.photographers[i].id
-        myImg.src = "images/Photographers/" + data.photographers[i].portrait
-        myH2.textContent = data.photographers[i].name
-        myH3.textContent = data.photographers[i].city + ", " + data.photographers[i].country
-        myPara1.textContent = data.photographers[i].tagline
-        myPara2.textContent = data.photographers[i].price + "€/jour"
+        myLink.href = "./html/photographer-page.html?id=" + photographe.id
+        myImg.src = "images/Photographers/" + photographe.portrait
+        myH2.textContent = photographe.name
+        myH3.textContent = photographe.city + ", " + photographe.country
+        myPara1.textContent = photographe.tagline
+        myPara2.textContent = photographe.price + "€/jour"
 
         bground.appendChild(myArticle)
         myArticle.appendChild(myLink)
@@ -56,7 +53,6 @@ function getPhotographer(data, i) {
         myArticle.appendChild(myPara1)
         myArticle.appendChild(myPara2)
         myArticle.appendChild(myPara3)
-        i += 1
     }   
 }
 
@@ -66,6 +62,7 @@ function filterTagList() {
     let myTags
 
     const filterTagList = [...new Set(tagList)]
+
     let e = 0
     for (const tag of filterTagList) {
         myTags = document.createElement('span')
@@ -80,15 +77,14 @@ function filterTagList() {
 async function pageAccueil() {
     
     const data = await getData()
-    let i = 0
 
-    getPhotographer(data, i)
+    displayPhotographer(data)
 
     filterTagList()     
     
 }
 
-function getId() { 
+function getIdPhotographer() { 
 
     window.onload = function() {
         try {
@@ -102,6 +98,4 @@ function getId() {
     } 
 } 
 
-
-
-export { pageAccueil }
+export { pageAccueil, getIdPhotographer }
