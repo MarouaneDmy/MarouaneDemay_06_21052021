@@ -1,6 +1,7 @@
 .photographe {
     display: flex;
     position: relative;
+    align-items: center;
     height: 313px;
     border-radius: 5px;
     background-color: lighten($color-grey, 65%);
@@ -18,9 +19,43 @@
             bottom: 40px;
         }
     }
+    img {
+        position: absolute;
+        right: 50px;
+        border-radius: 100px;
+        width: 200px;
+        height: 200px;
+        object-fit: cover;
+    }
     @media only screen and (max-width: 800px) {
         position: static;
         background-color: inherit;
+    }
+}
+
+.informations {
+    display: flex;   
+    flex-direction: column;
+    margin-left: 50px;
+    p {
+        margin: 0;
+    }
+    .name {
+        font-size: 50px;
+        color: $color-secondary;
+    }
+    .city {
+        margin-top: 5px;
+        font-size: 20px;
+        color: lighten($color-primary, 5%);
+    }
+    .tagline {
+        margin-top: 20px;
+        font-size: 16px;
+    }
+    .myTags {
+        margin-top: 20px;
+        font-size: 16px;
     }
 }
 
@@ -48,6 +83,8 @@
 }
 
 .prix {
+    display: flex;
+    align-items: center;
     position: absolute;
     background-color: lighten($color-secondary, 15%);
     width: 376px;
@@ -56,6 +93,12 @@
     border-top-right-radius: 5px;
     bottom: 0px;
     right: 36px;
+    p {
+        position: absolute;
+        right: 40px;
+        font-weight: bold;
+        font-size: 20px;
+    }
     @media only screen and (max-width: 800px) {
         display: none;
     }

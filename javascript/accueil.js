@@ -16,7 +16,7 @@ async function getData() {
 }
 
 // Fais apparaître l'image et autres paramètres de chaque photographe
-function displayPhotographer(data) {
+function displayPhotographers(data) {
     for (const photographe of data.photographers) {
         let myArticle = document.createElement('article')
         let myLink = document.createElement('a')
@@ -36,6 +36,7 @@ function displayPhotographer(data) {
             myTags.classList.add("tags")
         }
 
+        myArticle.classList.add("detailsPhotographes")
         myPara2.classList.add("price")
 
         myLink.href = "./html/photographer-page.html?id=" + photographe.id
@@ -78,7 +79,7 @@ async function pageAccueil() {
     
     const data = await getData()
 
-    displayPhotographer(data)
+    displayPhotographers(data)
 
     filterTagList()     
     

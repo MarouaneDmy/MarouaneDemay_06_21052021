@@ -137,7 +137,7 @@ h1 {
   }
 }
 
-article {
+.detailsPhotographes {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -145,38 +145,38 @@ article {
   width: 450px;
   margin-bottom: 50px;
 }
-article a {
+.detailsPhotographes a {
   text-decoration: none;
 }
-article a img {
+.detailsPhotographes a img {
   border-radius: 100px;
   width: 200px;
   height: 200px;
   object-fit: cover;
 }
-article a h2 {
+.detailsPhotographes a h2 {
   color: #D3573C;
   margin-top: 10px;
   margin-bottom: 0px;
 }
-article h3 {
+.detailsPhotographes h3 {
   color: #b22323;
   margin-top: 0px;
   margin-bottom: 5px;
 }
-article p {
+.detailsPhotographes p {
   font-size: 11px;
   margin-top: 0px;
   margin-bottom: 0px;
 }
-article .price {
+.detailsPhotographes .price {
   font-size: 10px;
   color: #787878;
   margin-top: 3px;
   margin-bottom: 5px;
 }
 @media only screen and (max-width: 1600px) {
-  article {
+  .detailsPhotographes {
     width: 350px;
   }
 }
@@ -184,6 +184,7 @@ article .price {
 .photographe {
   display: flex;
   position: relative;
+  align-items: center;
   height: 313px;
   border-radius: 5px;
   background-color: #f8f8f8;
@@ -216,11 +217,45 @@ article .price {
     bottom: 40px;
   }
 }
+.photographe img {
+  position: absolute;
+  right: 50px;
+  border-radius: 100px;
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+}
 @media only screen and (max-width: 800px) {
   .photographe {
     position: static;
     background-color: inherit;
   }
+}
+
+.informations {
+  display: flex;
+  flex-direction: column;
+  margin-left: 50px;
+}
+.informations p {
+  margin: 0;
+}
+.informations .name {
+  font-size: 50px;
+  color: #D3573C;
+}
+.informations .city {
+  margin-top: 5px;
+  font-size: 20px;
+  color: #a52020;
+}
+.informations .tagline {
+  margin-top: 20px;
+  font-size: 16px;
+}
+.informations .myTags {
+  margin-top: 20px;
+  font-size: 16px;
 }
 
 .photo {
@@ -263,6 +298,8 @@ article .price {
 }
 
 .prix {
+  display: flex;
+  align-items: center;
   position: absolute;
   background-color: #e18d7a;
   width: 376px;
@@ -271,6 +308,12 @@ article .price {
   border-top-right-radius: 5px;
   bottom: 0px;
   right: 36px;
+}
+.prix p {
+  position: absolute;
+  right: 40px;
+  font-weight: bold;
+  font-size: 20px;
 }
 @media only screen and (max-width: 800px) {
   .prix {
