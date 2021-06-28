@@ -11,12 +11,16 @@
         font-size: 20px;
         left: 35%;
         top: 63px;
-        @media only screen and (max-width: 800px) {
+        @media only screen and (max-width: 900px) {
+            position: fixed;
+            z-index: 1;
+            text-align: center;
             height: 35px;
             font-size: 18px;
-            left: 30%;
-            top: inherit;
+            top: inherit;        
             bottom: 40px;
+            left: 50%;
+            margin-left: -85px;
         }
     }
     img {
@@ -26,10 +30,24 @@
         width: 200px;
         height: 200px;
         object-fit: cover;
+        @media only screen and (max-width: 800px) {
+            width: 150px;
+            height: 150px;
+            right: 30px;
+            margin-bottom: 40px;
+        }
+        @media only screen and (max-width: 500px) {
+            width: 100px;
+            height: 100px;
+            right: 30px;
+        }
+        
     }
-    @media only screen and (max-width: 800px) {
+    @media only screen and (max-width: 500px) {
         position: static;
         background-color: inherit;
+        align-items: flex-start;
+        height: 150px;
     }
 }
 
@@ -43,49 +61,183 @@
     .name {
         font-size: 50px;
         color: $color-secondary;
+        @media only screen and (max-width: 500px) {
+            font-size: 32px;
+        }
     }
     .city {
         margin-top: 5px;
         font-size: 20px;
         color: lighten($color-primary, 5%);
+        @media only screen and (max-width: 500px) {
+            font-size: 14px;
+        }
     }
     .tagline {
         margin-top: 20px;
         font-size: 16px;
+        @media only screen and (max-width: 500px) {
+            margin-top: 5px;
+            font-size: 14px;
+            color: lighten($color-grey, 20%);
+        }
     }
     .myTags {
         margin-top: 20px;
         font-size: 16px;
+        @media only screen and (max-width: 500px) {
+            margin-top: 20px;
+            font-size: 14px;
+        }
+    }
+    @media only screen and (max-width: 500px) {
+        margin-left: 20px;
     }
 }
 
-.photo {
+.medias {
     display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     h2 {
         font-size: 18px;
         font-weight: 700;
+        margin-right: 20px;
         @media only screen and (max-width: 800px) {
             display: none;
         }
     }
+    .tri {
+        display: flex;
+        flex-wrap: wrap;
+        width: 100%;
+        height: 100px;
+        @media only screen and (max-width: 800px) {
+            display: none;
+        }
+    }
+}
+
+.dropdown {
+    position: relative;
+    margin-top: 8px;
     .trier {
+        display: flex;
+        position: absolute;
+        flex-wrap: wrap;
         @include button;
-        font-size: 18px;
-        margin-left: 20px;
-        margin-top: 8px;
+        height: 170px;
+        z-index: 1;
+        overflow: hidden;
+        padding-left: 10px;
+        p {
+            height: 20px;
+            font-size: 18px;
+            font-weight: 700;
+            margin: 0;
+            margin-left: 10px;
+        }
+        .popularite {
+            margin-top: 20px;      
+        }
+        .date {
+            width: 100%;
+        }
+        .titre {
+            width: 100%;
+        }
+        hr {
+            height: 1px;
+            width: 150px;
+            background-color: white;
+            border: none;
+            margin: 0;
+        }
         i {
             margin-left: 20px;
         }
         @media only screen and (max-width: 800px) {
             display: none;
         }
+        &:hover {
+            background-color: $color-primary;
+            p {
+                color: white;
+            }
+        }
     }
 }
+
+.photos {
+    display: flex;
+    flex-wrap: wrap;
+    .detailsMedia {     
+        position: relative;
+        margin: 40px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        img {
+            width: 350px;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 5px;
+            cursor: pointer;
+            @media only screen and (max-width: 500px) {
+                width: 335px;
+                height: 190px;
+            }
+        }
+        video {
+            width: 350px;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 5px;
+            cursor: pointer;
+            @media only screen and (max-width: 500px) {
+                width: 335px;
+                height: 190px;
+            }
+        }
+        h2 {
+            color: $color-primary;
+            font-weight: 500;
+            margin: 0;
+            margin-top: 5px;
+            @media only screen and (max-width: 800px) {
+                display: inherit;
+            }
+        }
+        p {
+            position: absolute;
+            right: 0;
+            bottom: -15px;
+            color: $color-primary;
+            font-weight: 700;
+            i {
+                color: $color-primary;
+                margin-left: 5px;
+            }
+            @media only screen and (max-width: 500px) {
+                bottom: -48px;
+            }
+        }
+        @media only screen and (max-width: 500px) {
+            width: 335px;
+            height: 190px;
+            margin-left: 0;
+            margin-right: 0;
+        }
+    }
+    @media only screen and (max-width: 1500px) {
+        justify-content: center;
+    }
+}
+
 
 .prix {
     display: flex;
     align-items: center;
-    position: absolute;
+    position: fixed;
     background-color: lighten($color-secondary, 15%);
     width: 376px;
     height: 70px;
@@ -99,17 +251,27 @@
         font-weight: bold;
         font-size: 20px;
     }
-    @media only screen and (max-width: 800px) {
+    .likes {
+        position: static;
+        font-size: 20px;
+        margin-left: 40px;
+        margin-right: 10px;
+    }
+    @media only screen and (max-width: 900px) {
         display: none;
     }
 }
 
+/*---------------------- PARTIE MODAL --------------------*/
+
 .bground {
     display: none;
     position: fixed;
-    z-index: 1;
+    z-index: 2;
     left: 0;
     top: 0;
+    justify-content: center;
+    align-items: center;
     height: 100%;
     width: 100%;
     overflow: auto;
@@ -117,16 +279,45 @@
 }
 
 .modal {
+    position: relative;
     width: 100%;
     max-width: 500px;
     background: lighten($color-secondary, 15px);
     border-radius: 3px;
+    box-shadow: 0 2px 7px 2px rgba(0, 0, 0, 0.2);
     overflow: hidden;
-    position: relative;
     color: #fff;
+    padding-top: 15px;
+    h2 {
+        margin: 0;
+        margin-left: 25px;
+        color: black;
+        font-weight: 400;
+    }
     &-body {
-        padding: 15px 8%;
-        margin: 15px auto; 
+        padding: 15px 5%;
+        margin: auto;
+        margin-bottom: 10px;
+        label {
+            color: #312E2E;
+        }
+        input {
+            margin: 3px 0px;
+            width: 100%;
+            height: 35px;
+            border-radius: 5px;
+            border: none;
+            outline: none;
+        }
+        .message {
+            height: 100px;
+        }
+        .envoyer {
+            @include button;
+            width: 150px;
+            height: 55px;
+            margin-top: 20px;
+        }
     }
 }
 
@@ -138,7 +329,7 @@
     height: 32px;
     opacity: 1;
     cursor: pointer;
-    transform: scale(0.7);
+    transform: scale(1);
 }
 
 .close:before,

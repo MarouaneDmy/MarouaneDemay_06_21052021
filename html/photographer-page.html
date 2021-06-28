@@ -17,32 +17,63 @@
 
     <main>
         <section class="photographe">
-            <button class="contacter" aria-label="Contact Me">Contactez-moi</button>
-        </section>
-
-        <section class="photo">
-            <h2>Trier par</h2>
-            <button class="trier">
-                Popularité
-                <i class="fas fa-chevron-down" aria-hidden="true"></i>
+            <button class="contacter modal-btn" aria-label="Contact Me">
+                Contactez-moi
             </button>
         </section>
 
-        <section class="prix">
+        <section class="medias">
 
+            <div class="tri">
+                <h2>Trier par</h2>
+                <div class="dropdown">
+                    <div class="trier">
+                        <p class="popularite">
+                            Popularité
+                            <i class="fas fa-chevron-down" aria-hidden="true"></i>
+                        </p>
+                        <hr>
+                        <p class="date">Date</p>
+                        <hr>
+                        <p class="titre">Titre</p>
+                        
+                    </div>
+                </div>            
+            </div>
+
+            <div class="photos">
+                
+            </div>
+        </section>
+
+        <section class="prix">
+            
         </section>  
 
         <section class="bground">
             <div class="modal">
                 <span class="close"></span>
                 <div class="modal-body">
-                    <label>Prénom</label>
-                    <input name="prenom">
+                    <label>Prénom</label><br>
+                    <input name="prenom"><br>
+
+                    <label>Nom</label><br>
+                    <input name="nom"><br>
+
+                    <label>Email</label><br>
+                    <input name="email"><br>
+
+                    <label>Votre message</label><br>
+                    <input class="message" name="message"><br>
+
+                    <button class="envoyer" aria-label="Envoyer">
+                        Envoyer
+                    </button>
                 </div>
+                
             </div>
         </section>
     </main>
     <script type ="module" src="../javascript/appPhotographerPage.js"></script>
-    
 </body>
 </html>

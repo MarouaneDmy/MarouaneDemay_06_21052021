@@ -1,3 +1,9 @@
-import * as photographer_page from "./photographerPage.js"
+import Photographe from "./Photographe.js"
+import Medias from "./Medias.js"
+import Modal from "./Modal.js"
 
-photographer_page.photographerPage()
+Photographe.photographerInformation()
+Medias.photographerMedias()
+Modal.displayModal()
+
+

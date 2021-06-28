@@ -43,9 +43,14 @@ p {
   letter-spacing: 0em;
 }
 
+label {
+  font-family: "DM Sans", sans-serif;
+  font-size: 20px;
+}
+
 header {
   display: flex;
-  height: 150px;
+  height: 120px;
   justify-content: center;
 }
 
@@ -129,7 +134,7 @@ h1 {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  margin-top: 60px;
+  margin-top: 100px;
 }
 @media only screen and (max-width: 800px) {
   .photographes {
@@ -208,13 +213,17 @@ h1 {
   background-color: #D3573C;
   color: black;
 }
-@media only screen and (max-width: 800px) {
+@media only screen and (max-width: 900px) {
   .photographe .contacter {
+    position: fixed;
+    z-index: 1;
+    text-align: center;
     height: 35px;
     font-size: 18px;
-    left: 30%;
     top: inherit;
     bottom: 40px;
+    left: 50%;
+    margin-left: -85px;
   }
 }
 .photographe img {
@@ -226,9 +235,26 @@ h1 {
   object-fit: cover;
 }
 @media only screen and (max-width: 800px) {
+  .photographe img {
+    width: 150px;
+    height: 150px;
+    right: 30px;
+    margin-bottom: 40px;
+  }
+}
+@media only screen and (max-width: 500px) {
+  .photographe img {
+    width: 100px;
+    height: 100px;
+    right: 30px;
+  }
+}
+@media only screen and (max-width: 500px) {
   .photographe {
     position: static;
     background-color: inherit;
+    align-items: flex-start;
+    height: 150px;
   }
 }
 
@@ -244,33 +270,83 @@ h1 {
   font-size: 50px;
   color: #D3573C;
 }
+@media only screen and (max-width: 500px) {
+  .informations .name {
+    font-size: 32px;
+  }
+}
 .informations .city {
   margin-top: 5px;
   font-size: 20px;
   color: #a52020;
 }
+@media only screen and (max-width: 500px) {
+  .informations .city {
+    font-size: 14px;
+  }
+}
 .informations .tagline {
   margin-top: 20px;
   font-size: 16px;
+}
+@media only screen and (max-width: 500px) {
+  .informations .tagline {
+    margin-top: 5px;
+    font-size: 14px;
+    color: #858585;
+  }
 }
 .informations .myTags {
   margin-top: 20px;
   font-size: 16px;
 }
-
-.photo {
-  display: flex;
+@media only screen and (max-width: 500px) {
+  .informations .myTags {
+    margin-top: 20px;
+    font-size: 14px;
+  }
 }
-.photo h2 {
+@media only screen and (max-width: 500px) {
+  .informations {
+    margin-left: 20px;
+  }
+}
+
+.medias {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.medias h2 {
   font-size: 18px;
   font-weight: 700;
+  margin-right: 20px;
 }
 @media only screen and (max-width: 800px) {
-  .photo h2 {
+  .medias h2 {
     display: none;
   }
 }
-.photo .trier {
+.medias .tri {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  height: 100px;
+}
+@media only screen and (max-width: 800px) {
+  .medias .tri {
+    display: none;
+  }
+}
+
+.dropdown {
+  position: relative;
+  margin-top: 8px;
+}
+.dropdown .trier {
+  display: flex;
+  position: absolute;
+  flex-wrap: wrap;
   width: 170px;
   height: 69px;
   border-radius: 5px 5px 5px 5px;
@@ -280,27 +356,134 @@ h1 {
   cursor: pointer;
   font-family: "DM Sans", sans-serif;
   font-weight: 700;
-  font-size: 18px;
-  margin-left: 20px;
-  margin-top: 8px;
+  height: 170px;
+  z-index: 1;
+  overflow: hidden;
+  padding-left: 10px;
 }
-.photo .trier:hover {
+.dropdown .trier:hover {
   background-color: #D3573C;
   color: black;
 }
-.photo .trier i {
+.dropdown .trier p {
+  height: 20px;
+  font-size: 18px;
+  font-weight: 700;
+  margin: 0;
+  margin-left: 10px;
+}
+.dropdown .trier .popularite {
+  margin-top: 20px;
+}
+.dropdown .trier .date {
+  width: 100%;
+}
+.dropdown .trier .titre {
+  width: 100%;
+}
+.dropdown .trier hr {
+  height: 1px;
+  width: 150px;
+  background-color: white;
+  border: none;
+  margin: 0;
+}
+.dropdown .trier i {
   margin-left: 20px;
 }
 @media only screen and (max-width: 800px) {
-  .photo .trier {
+  .dropdown .trier {
     display: none;
+  }
+}
+.dropdown .trier:hover {
+  background-color: #901C1C;
+}
+.dropdown .trier:hover p {
+  color: white;
+}
+
+.photos {
+  display: flex;
+  flex-wrap: wrap;
+}
+.photos .detailsMedia {
+  position: relative;
+  margin: 40px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.photos .detailsMedia img {
+  width: 350px;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 5px;
+  cursor: pointer;
+}
+@media only screen and (max-width: 500px) {
+  .photos .detailsMedia img {
+    width: 335px;
+    height: 190px;
+  }
+}
+.photos .detailsMedia video {
+  width: 350px;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 5px;
+  cursor: pointer;
+}
+@media only screen and (max-width: 500px) {
+  .photos .detailsMedia video {
+    width: 335px;
+    height: 190px;
+  }
+}
+.photos .detailsMedia h2 {
+  color: #901C1C;
+  font-weight: 500;
+  margin: 0;
+  margin-top: 5px;
+}
+@media only screen and (max-width: 800px) {
+  .photos .detailsMedia h2 {
+    display: inherit;
+  }
+}
+.photos .detailsMedia p {
+  position: absolute;
+  right: 0;
+  bottom: -15px;
+  color: #901C1C;
+  font-weight: 700;
+}
+.photos .detailsMedia p i {
+  color: #901C1C;
+  margin-left: 5px;
+}
+@media only screen and (max-width: 500px) {
+  .photos .detailsMedia p {
+    bottom: -48px;
+  }
+}
+@media only screen and (max-width: 500px) {
+  .photos .detailsMedia {
+    width: 335px;
+    height: 190px;
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+@media only screen and (max-width: 1500px) {
+  .photos {
+    justify-content: center;
   }
 }
 
 .prix {
   display: flex;
   align-items: center;
-  position: absolute;
+  position: fixed;
   background-color: #e18d7a;
   width: 376px;
   height: 70px;
@@ -315,18 +498,27 @@ h1 {
   font-weight: bold;
   font-size: 20px;
 }
-@media only screen and (max-width: 800px) {
+.prix .likes {
+  position: static;
+  font-size: 20px;
+  margin-left: 40px;
+  margin-right: 10px;
+}
+@media only screen and (max-width: 900px) {
   .prix {
     display: none;
   }
 }
 
+/*---------------------- PARTIE MODAL --------------------*/
 .bground {
   display: none;
   position: fixed;
-  z-index: 1;
+  z-index: 2;
   left: 0;
   top: 0;
+  justify-content: center;
+  align-items: center;
   height: 100%;
   width: 100%;
   overflow: auto;
@@ -334,17 +526,58 @@ h1 {
 }
 
 .modal {
+  position: relative;
   width: 100%;
   max-width: 500px;
   background: #e18d7a;
   border-radius: 3px;
+  box-shadow: 0 2px 7px 2px rgba(0, 0, 0, 0.2);
   overflow: hidden;
-  position: relative;
   color: #fff;
+  padding-top: 15px;
+}
+.modal h2 {
+  margin: 0;
+  margin-left: 25px;
+  color: black;
+  font-weight: 400;
 }
 .modal-body {
-  padding: 15px 8%;
-  margin: 15px auto;
+  padding: 15px 5%;
+  margin: auto;
+  margin-bottom: 10px;
+}
+.modal-body label {
+  color: #312E2E;
+}
+.modal-body input {
+  margin: 3px 0px;
+  width: 100%;
+  height: 35px;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+}
+.modal-body .message {
+  height: 100px;
+}
+.modal-body .envoyer {
+  width: 170px;
+  height: 69px;
+  border-radius: 5px 5px 5px 5px;
+  border: none;
+  background-color: #901C1C;
+  color: #FAFAFA;
+  cursor: pointer;
+  font-family: "DM Sans", sans-serif;
+  font-weight: 700;
+  width: 150px;
+  height: 55px;
+  margin-top: 20px;
+}
+.modal-body .envoyer:hover {
+  background-color: #D3573C;
+  color: black;
 }
 
 .close {
@@ -355,7 +588,7 @@ h1 {
   height: 32px;
   opacity: 1;
   cursor: pointer;
-  transform: scale(0.7);
+  transform: scale(1);
 }
 
 .close:before,
