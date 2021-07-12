@@ -5,54 +5,34 @@ const modalBtn = document.querySelector(".modal-btn")
 const modalClose = document.querySelector(".close")
 
 export default class Modal {
-
-  static async getData() {
-    let response = await fetch("../javascript/json/data.json")
-    let data = await response.json()
-    return data
+  constructor(data) {
+    this.name = data.name
   }
 
-  static getPhotographerId() { 
-    try {
-        let url_string = (window.location.href).toLowerCase()
-        let url = new URL(url_string)
-        let id = url.searchParams.get("id")
-        return id
-    } catch (err) {
-        console.log("issues with Parsing URL Parameter's - " + err)
-    }
-}
-  
   // launch modal form
-  static launchModal() {
+  launchModal() {
     modalbg.style.display = "flex"
   }
 
   // close modal form
-  static closeModal() {
+  closeModal() {
     modalbg.style.display = "none"
   }
 
-  static addPhotographerNameModal(data) {
+  addPhotographerName() {
     let myTitle = document.createElement('h2')
     let myName = document.createElement('h2')
 
     myTitle.textContent = "Contactez-moi"
-    myName.textContent = data.name
+    myName.textContent = this.name
 
     modal.prepend(myName)
     modal.prepend(myTitle)   
   }
 
-  static async displayModal() {
-    
-    const data = await this.getData()
+  display() {
 
-    const photographerId = this.getPhotographerId()
-    
-    const foundPhotographerById = data.photographers.find(photographers => photographers.id == photographerId)
-
-    this.addPhotographerNameModal(foundPhotographerById)
+    this.addPhotographerName()
 
     // launch modal event
     modalBtn.addEventListener("click", this.launchModal)

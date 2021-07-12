@@ -1,9 +1,32 @@
+import DataManager from "./DataManager.js"
 import Photographe from "./Photographe.js"
-import Medias from "./Medias.js"
 import Modal from "./Modal.js"
 
-Photographe.photographerInformation()
-Medias.photographerMedias()
-Modal.displayModal()
+
+(async function()  {
+    // DATAMANAGER
+    const dataManager = new DataManager()
+    const data = await dataManager.getData()
+    const photographerId = dataManager.getPhotographerId()
+    const foundPhotographerById = data.photographers.find(photographers => photographers.id == photographerId)
+    const foundMediaByPhotographerId = data.media.filter(media => media.photographerId == photographerId)
+
+    // MODAL
+    const modal = new Modal(foundPhotographerById)
+    modal.display()
+
+    // PHOTOGRAPHE
+    const photographe = new Photographe(foundPhotographerById)
+    photographe.trierOpenClose()
+    photographe.display()
+    photographe.setMedia(foundMediaByPhotographerId)
+    photographe.sortMedias(foundMediaByPhotographerId)
+    photographe.additionOfLikes(foundMediaByPhotographerId)
+})()
 
 
+
+
+
+
+ 

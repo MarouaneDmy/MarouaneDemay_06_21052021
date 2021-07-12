@@ -70,6 +70,8 @@ function filterTagList() {
         myTags.textContent = "#" + strUcFirst(filterTagList[e])
         myPara1.appendChild(myTags)
         myTags.classList.add("tags")
+        myTags.classList.add("triTags")
+        myTags.setAttribute("name", tag)
         e += 1
     }
     navTag.appendChild(myPara1)
@@ -79,24 +81,26 @@ async function pageAccueil() {
     
     const data = await getData()
 
+    let photographerTag
+
+    const foundPhotographerByTag = data.photographers.filter(photographers => photographers.tags.includes(photographerTag))
+    const photographerWithoutTag = data.photographers.filter(photographers => !photographers.tags.includes(photographerTag))
+    const sortPhotographerByTag = foundPhotographerByTag.concat(photographerWithoutTag) 
+
     displayPhotographers(data)
 
-    filterTagList()     
+    filterTagList()    
+    
+    const tags = document.querySelectorAll(".triTags")
+
+    console.log(tags)
+
+    tags.addEventListener("click", function(){
+        photographerTag = tags.name
+        console.log(photographerTag)
+    })
+
     
 }
 
-function getIdPhotographer() { 
-
-    window.onload = function() {
-        try {
-            let url_string = (window.location.href).toLowerCase()
-            let url = new URL(url_string)
-            let id = url.searchParams.get("id")
-            console.log(id)
-        } catch (err) {
-            console.log("issues with Parsing URL Parameter's - " + err)
-        }
-    } 
-} 
-
-export { pageAccueil, getIdPhotographer }
+export { pageAccueil }

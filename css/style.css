@@ -94,6 +94,7 @@ h1 {
   justify-content: center;
   margin-top: 55px;
   margin-right: 50px;
+  cursor: pointer;
 }
 @media only screen and (max-width: 1600px) {
   .tagList {
@@ -356,7 +357,7 @@ h1 {
   cursor: pointer;
   font-family: "DM Sans", sans-serif;
   font-weight: 700;
-  height: 170px;
+  height: 70px;
   z-index: 1;
   overflow: hidden;
   padding-left: 10px;
@@ -369,16 +370,7 @@ h1 {
   height: 20px;
   font-size: 18px;
   font-weight: 700;
-  margin: 0;
   margin-left: 10px;
-}
-.dropdown .trier .popularite {
-  margin-top: 20px;
-}
-.dropdown .trier .date {
-  width: 100%;
-}
-.dropdown .trier .titre {
   width: 100%;
 }
 .dropdown .trier hr {
@@ -388,8 +380,20 @@ h1 {
   border: none;
   margin: 0;
 }
+.dropdown .trier .barre {
+  margin-top: 15px;
+}
+.dropdown .trier .barre2 {
+  margin-top: 15px;
+}
 .dropdown .trier i {
+  position: absolute;
+  right: 20px;
+  top: 25px;
   margin-left: 20px;
+}
+.dropdown .trier .rotate {
+  transform: rotate(180deg);
 }
 @media only screen and (max-width: 800px) {
   .dropdown .trier {
@@ -398,9 +402,16 @@ h1 {
 }
 .dropdown .trier:hover {
   background-color: #901C1C;
+  color: white;
 }
 .dropdown .trier:hover p {
   color: white;
+}
+.dropdown .trier :nth-child(0n+1) {
+  margin-top: 20px;
+}
+.dropdown .open {
+  height: 190px;
 }
 
 .photos {

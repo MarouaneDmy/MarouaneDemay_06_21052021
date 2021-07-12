@@ -126,7 +126,7 @@
         position: absolute;
         flex-wrap: wrap;
         @include button;
-        height: 170px;
+        height: 70px;
         z-index: 1;
         overflow: hidden;
         padding-left: 10px;
@@ -134,17 +134,8 @@
             height: 20px;
             font-size: 18px;
             font-weight: 700;
-            margin: 0;
             margin-left: 10px;
-        }
-        .popularite {
-            margin-top: 20px;      
-        }
-        .date {
-            width: 100%;
-        }
-        .titre {
-            width: 100%;
+            width: 100%; 
         }
         hr {
             height: 1px;
@@ -153,18 +144,37 @@
             border: none;
             margin: 0;
         }
+        .barre {
+            margin-top: 15px;
+        }
+        .barre2 {
+            margin-top: 15px;
+        }
         i {
+            position: absolute;
+            right: 20px;
+            top: 25px;
             margin-left: 20px;
+        }
+        .rotate {
+            transform: rotate(180deg);
         }
         @media only screen and (max-width: 800px) {
             display: none;
         }
         &:hover {
             background-color: $color-primary;
+            color: white;
             p {
                 color: white;
             }
         }
+        :nth-child(0n+1) {
+            margin-top: 20px;
+        }
+    }
+    .open {
+        height: 190px;
     }
 }
 
