@@ -331,6 +331,7 @@
     }
 }
 
+// Croix de fermeture de la modale Contact
 .close {
     position: absolute;
     right: 15px;
@@ -356,5 +357,117 @@ background-color: #fff;
     transform: rotate(45deg);
 }
 .close:after {
+    transform: rotate(-45deg);
+}
+
+.lightbox {
+    display: none;
+    position: fixed;
+    z-index: 2;
+    left: 0;
+    top: 0;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+    background-color: white;  
+}
+
+.carrousel {
+    position: relative;
+    padding-top: 10px;
+    margin: 40px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    overflow: hidden;
+    &-body {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        width: 900px;
+        height: 800px;
+        img {
+            width: 700px;
+            height: 700px;
+            margin-bottom: -50px;
+            object-fit: cover;
+            border-radius: 5px;
+            cursor: pointer;
+            @media only screen and (max-width: 500px) {
+                width: 335px;
+                height: 190px;
+            }
+        }
+        video {
+            width: 700px;
+            height: 700px;
+            margin-bottom: -50px;
+            object-fit: cover;
+            border-radius: 5px;
+            cursor: pointer;
+            @media only screen and (max-width: 500px) {
+                width: 335px;
+                height: 190px;
+            }
+        }
+        h2 {
+            width: 100%;
+            font-size: 24px;
+            font-weight: 400;
+            margin: 0;
+            margin-left: 100px;
+            color: $color-primary;
+        }
+    }
+}
+
+.arrow-left {
+    position: absolute;
+    font-size: 50px;
+    color: $color-primary;
+    left: 40px;
+    top: 45%;
+    bottom: 50%;
+    cursor: pointer;
+}
+
+.arrow-right {
+    position: absolute;
+    font-size: 50px;
+    color: $color-primary;
+    right: 40px;
+    top: 45%;
+    bottom: 50%;
+    cursor: pointer;
+}
+
+// Croix de fermeture de la lightbox
+.closeCarrousel {
+    position: absolute;
+    right: 15px;
+    top: 50px;
+    width: 32px;
+    height: 32px;
+    opacity: 1;
+    cursor: pointer;
+    transform: scale(1);
+}
+
+.closeCarrousel:before,
+.closeCarrousel:after {
+    position: absolute;
+    left: 15px;
+    content: " ";
+    height: 33px;
+    width: 3px;
+    background-color: $color-primary;
+}
+
+.closeCarrousel:before {
+    transform: rotate(45deg);
+}
+.closeCarrousel:after {
     transform: rotate(-45deg);
 }

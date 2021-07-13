@@ -18,6 +18,12 @@ const barre2 = document.querySelector(".barre2")
 const arrow = document.getElementById("arrow")
 let tagList = []
 
+//------------- CARROUSEL -------------//
+const lightbox = document.querySelector(".lightbox")
+const close = document.querySelector(".closeCarrousel")
+const precedent = document.querySelector(".arrow-left")
+const suivant = document.querySelector(".arrow-right")
+
 export default class Photographe {
     constructor(data) {
         this.name = data.name
@@ -156,9 +162,66 @@ export default class Photographe {
             
             const media = MediaFactory.createMedia(type, dataMedia)
             this.medias.push(media)
-            
+            console.log(this.medias)
         }
     }
+
+    // close modal form
+    launchLightbox() {
+        lightbox.style.display = "flex"
+    }
+
+    // close modal form
+    closeLightbox() {
+        lightbox.style.display = "none"
+    }
+
+    carrouselMedias(data) {
+        let medias = document.querySelectorAll(".lightbox-btn")
+        const carrousel = document.querySelector(".carrousel-body")
+        const source = document.querySelector(".source")
+        let myImage = document.createElement('img')
+        let myVideo = document.createElement('video')
+        let mySource = document.createElement('source')
+        let myTitle = document.createElement('h2')
+        
+        for (const media of medias) {
+            if (carrousel != "") {
+                carrousel.innerHTML = "";
+            }
+
+            media.addEventListener("click", function(){
+                const photographe = new Photographe(data)
+                photographe.launchLightbox()
+
+                console.log(media)
+
+                if (media.src !== "") {
+                    myImage.src = media.src
+                    carrousel.appendChild(myImage)
+
+                    carrousel.appendChild(myVideo)
+                    carrousel.removeChild(myVideo)
+                }
+
+                if (media.src === "") {
+                    myVideo.controls = "controls"
+                    mySource.src = source.src
+                    mySource.type = "video/mp4"
+
+                    carrousel.appendChild(myVideo)
+                    myVideo.appendChild(mySource)
+
+                    carrousel.appendChild(myImage)
+                    carrousel.removeChild(myImage)
+                }
+                myTitle.textContent = media.nextSibling.textContent
+                carrousel.appendChild(myTitle)
+            })
+        }
+
+        close.addEventListener("click", this.closeLightbox)
+    } 
 
     sortByTag(data) {
         let photographerTags = document.querySelectorAll(".sortTag")
@@ -249,6 +312,7 @@ export default class Photographe {
             const photographe = new Photographe(data)
             photographe.sortByLikes(data)
             photographe.setMedia(data)
+            photographe.carrouselMedias(data)
             trier.prepend(barre)
             trier.prepend(popularite)
         })
@@ -257,6 +321,7 @@ export default class Photographe {
             const photographe = new Photographe(data)
             photographe.sortByDate(data)
             photographe.setMedia(data)
+            photographe.carrouselMedias(data)
             trier.prepend(barre)
             trier.prepend(date)
         })
@@ -265,6 +330,7 @@ export default class Photographe {
             const photographe = new Photographe(data)
             photographe.sortByTitre(data)
             photographe.setMedia(data)
+            photographe.carrouselMedias(data)
             trier.prepend(barre2)
             trier.prepend(titre)
         })  

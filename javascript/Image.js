@@ -18,6 +18,7 @@ export default class Image extends Media {
         let heart = document.createElement('i')
 
         myArticle.classList.add("detailsMedia")
+        myImg.classList.add("lightbox-btn")
         heart.classList.add("fas")
         heart.classList.add("fa-heart")
 
@@ -28,9 +29,9 @@ export default class Image extends Media {
         photos.appendChild(myArticle)
         myArticle.appendChild(myImg)
 
+        myArticle.appendChild(myTitle)
         myArticle.appendChild(myLikes)
         myLikes.appendChild(heart)
-        myArticle.appendChild(myTitle)
 
     }
 }

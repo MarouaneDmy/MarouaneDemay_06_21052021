@@ -18,10 +18,12 @@ export default class Video extends Media {
         let heart = document.createElement('i')
 
         myArticle.classList.add("detailsMedia")
+        myVid.classList.add("lightbox-btn")
+        mySource.classList.add("source")
         heart.classList.add("fas")
         heart.classList.add("fa-heart")
 
-        myVid.controls = "controls"
+/*         myVid.controls = "controls" */
         mySource.src = "../images/Medias/" + this.video
         mySource.type = "video/mp4"
         myTitle.textContent = this.title
@@ -30,9 +32,10 @@ export default class Video extends Media {
         photos.appendChild(myArticle)
         myArticle.appendChild(myVid)
         
+        myArticle.appendChild(myTitle)
         myArticle.appendChild(myLikes)
         myLikes.appendChild(heart)
-        myArticle.appendChild(myTitle)
+        
         
         myVid.appendChild(mySource)
              

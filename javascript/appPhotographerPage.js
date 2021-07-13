@@ -4,16 +4,13 @@ import Modal from "./Modal.js"
 
 
 (async function()  {
+    
     // DATAMANAGER
     const dataManager = new DataManager()
     const data = await dataManager.getData()
     const photographerId = dataManager.getPhotographerId()
     const foundPhotographerById = data.photographers.find(photographers => photographers.id == photographerId)
     const foundMediaByPhotographerId = data.media.filter(media => media.photographerId == photographerId)
-
-    // MODAL
-    const modal = new Modal(foundPhotographerById)
-    modal.display()
 
     // PHOTOGRAPHE
     const photographe = new Photographe(foundPhotographerById)
@@ -22,6 +19,11 @@ import Modal from "./Modal.js"
     photographe.setMedia(foundMediaByPhotographerId)
     photographe.sortMedias(foundMediaByPhotographerId)
     photographe.additionOfLikes(foundMediaByPhotographerId)
+    photographe.carrouselMedias(foundMediaByPhotographerId)
+
+    // MODAL
+    const modal = new Modal(foundPhotographerById)
+    modal.display()
 })()
 
 
