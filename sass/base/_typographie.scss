@@ -1,35 +1,35 @@
 @font-face {
-    font-family: 'DM Sans';
-    src: url('./polices/DMSans-Regular.woff2') format('woff2'),
-        url('./polices/DMSans-Regular.woff') format('woff');
+    font-family: 'DM_Sans';
+    src: url('polices/DMSans-Regular.woff2') format('woff2'),
+        url('polices/DMSans-Regular.woff') format('woff');
     font-weight: normal;
     font-style: normal;
     font-display: swap;
 }
 
 h1 {
-    font-family: 'DM Sans', sans-serif;
+    font-family: 'DM_Sans', sans-serif;
     font-size: 36px;
 }
 
 h2 {
-    font-family: 'DM Sans', sans-serif;
+    font-family: 'DM_Sans', sans-serif;
     font-size: 36px;
 }
 
 h3 {
-    font-family: 'DM Sans', sans-serif;
+    font-family: 'DM_Sans', sans-serif;
     font-size: 14px;
 }
 
 p {
-    font-family: 'DM Sans', sans-serif;
+    font-family: 'DM_Sans', sans-serif;
     font-style: normal;
     font-weight: 400;
     letter-spacing: 0em;
 }
 
 label {
-    font-family: 'DM Sans', sans-serif;
+    font-family: 'DM_Sans', sans-serif;
     font-size: 20px;
 }
