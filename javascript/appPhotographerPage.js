@@ -1,6 +1,7 @@
 import DataManager from "./DataManager.js"
 import Photographe from "./Photographe.js"
 import Modal from "./Modal.js"
+import Carrousel from "./Carrousel.js"
 
 
 (async function()  {
@@ -17,13 +18,20 @@ import Modal from "./Modal.js"
     photographe.trierOpenClose()
     photographe.display()
     photographe.setMedia(foundMediaByPhotographerId)
+    
+    const arrayMedia = photographe.medias
     photographe.sortMedias(foundMediaByPhotographerId)
     photographe.additionOfLikes(foundMediaByPhotographerId)
-    photographe.carrouselMedias(foundMediaByPhotographerId)
+
+    
 
     // MODAL
     const modal = new Modal(foundPhotographerById)
     modal.display()
+
+    // CARROUSEL 
+    const carrousel = new Carrousel()
+    carrousel.display(arrayMedia)
 })()
 
 

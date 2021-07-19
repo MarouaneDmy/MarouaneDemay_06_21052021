@@ -18,7 +18,7 @@ export default class Video extends Media {
         let heart = document.createElement('i')
 
         myArticle.classList.add("detailsMedia")
-        myVid.classList.add("lightbox-btn")
+        myTitle.classList.add("title")
         mySource.classList.add("source")
         heart.classList.add("fas")
         heart.classList.add("fa-heart")
@@ -36,8 +36,9 @@ export default class Video extends Media {
         myArticle.appendChild(myLikes)
         myLikes.appendChild(heart)
         
-        
         myVid.appendChild(mySource)
+
+        return myArticle
              
     }
 }
