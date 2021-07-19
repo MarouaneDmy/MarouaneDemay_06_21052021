@@ -1,22 +1,9 @@
 /* Couleur */
-html {
-  margin-left: 4%;
-  margin-right: 4%;
-}
-@media only screen and (max-width: 800px) {
-  html {
-    margin: 0;
-  }
-}
-
-body {
-  margin: 0;
-  justify-content: center;
-}
-
 @font-face {
   font-family: "DM Sans";
-  src: url("/polices/DMSans-Regular.woff2") format("woff2"), url("/polices/DMSans-Regular.woff") format("woff");
+  /* src: url('/polices/DMSans-Regular.woff2') format('woff2'),
+      url('/polices/DMSans-Regular.woff') format('woff');  */
+  src: url("/polices/DMSans-Regular.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -46,6 +33,21 @@ p {
 label {
   font-family: "DM Sans", sans-serif;
   font-size: 20px;
+}
+
+html {
+  margin-left: 4%;
+  margin-right: 4%;
+}
+@media only screen and (max-width: 800px) {
+  html {
+    margin: 0;
+  }
+}
+
+body {
+  margin: 0;
+  justify-content: center;
 }
 
 header {
@@ -117,7 +119,7 @@ h1 {
 
 .tags {
   color: #a52020;
-  font-family: "DM Sans";
+  font-family: "DM Sans", sans-serif;
   font-weight: bold;
   border: 0.5px solid #dedede;
   border-radius: 30px;
