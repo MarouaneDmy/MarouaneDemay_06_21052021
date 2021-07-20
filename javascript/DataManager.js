@@ -1,6 +1,6 @@
 export default class DataManager {
-    async getData() {
-        let response = await fetch("./javascript/json/data.json")
+    async getData(chemin) {
+        let response = await fetch(chemin)
         let data = await response.json()   
         return data
     }

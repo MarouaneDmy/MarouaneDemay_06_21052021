@@ -5,7 +5,8 @@ import Photographe from "./Photographe.js"
     
     // DATAMANAGER
     const dataManager = new DataManager()
-    const data = await dataManager.getData()
+    const chemin = "./javascript/json/data.json"
+    const data = await dataManager.getData(chemin)
     const foundPhotographer = data.photographers.filter(photographers => photographers)
     
     // PHOTOGRAPHE

@@ -8,7 +8,8 @@ import Carrousel from "./Carrousel.js"
     
     // DATAMANAGER
     const dataManager = new DataManager()
-    const data = await dataManager.getData()
+    const chemin = "../javascript/json/data.json"
+    const data = await dataManager.getData(chemin)
     const photographerId = dataManager.getPhotographerId()
     const foundPhotographerById = data.photographers.find(photographers => photographers.id == photographerId)
     const foundMediaByPhotographerId = data.media.filter(media => media.photographerId == photographerId)
