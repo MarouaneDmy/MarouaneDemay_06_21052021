@@ -22,7 +22,7 @@ export default class Image extends Media {
         heart.classList.add("fas")
         heart.classList.add("fa-heart")
 
-        myImg.src = "../images/Medias/" + this.image
+        myImg.src = "../images/medias/" + this.image
         myTitle.textContent = this.title
         myLikes.textContent = this.likes
 
