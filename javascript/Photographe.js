@@ -150,7 +150,7 @@ export default class Photographe {
             type = "image"
     
             if (dataMedia.image === undefined) {
-                type = "video"
+                type = "image"
             } 
             
             const media = MediaFactory.createMedia(type, dataMedia)
