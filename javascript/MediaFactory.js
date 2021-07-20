@@ -8,13 +8,13 @@ export default class MediaFactory {
 
     static createMedia(type, data) {
 
-        if (type == "video") {
-            return new Video(data).display()
-        } 
-
         if (type == "image") {  
             return new Image(data).display()
         }
+
+        if (type == "video") {
+            return new Video(data).display()
+        } 
     }
 
     
