@@ -24,8 +24,6 @@ import Carrousel from "./Carrousel.js"
     photographe.sortMedias(foundMediaByPhotographerId)
     photographe.additionOfLikes(foundMediaByPhotographerId)
 
-    
-
     // MODAL
     const modal = new Modal(foundPhotographerById)
     modal.display()

@@ -24,7 +24,7 @@ export default class Video extends Media {
         heart.classList.add("fa-heart")
 
 /*         myVid.controls = "controls" */
-        mySource.src = "../images/Medias/" + this.video
+        mySource.src = "../images/medias/" + this.video
         mySource.type = "video/mp4"
         myTitle.textContent = this.title
         myLikes.textContent = this.likes
