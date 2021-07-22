@@ -39,8 +39,14 @@ export default class Modal {
 
     // close modal event
     modalClose.addEventListener("click", this.closeModal)
+
+    window.addEventListener("keydown", function(event){
+      const modal = new Modal(this.name)
+      if(event.key === "Escape") {
+          modal.closeModal()
+      }
+  })
     
   }
-
 }
 

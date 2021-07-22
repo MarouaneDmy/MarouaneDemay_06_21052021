@@ -11,6 +11,7 @@ const photos = document.querySelector(".photos")
 const prix = document.querySelector(".prix")
 
 const trier = document.querySelector(".trier")
+const triLink = document.querySelectorAll(".triLink")
 const popularite = document.querySelector(".popularite")
 const date = document.querySelector(".date")
 const titre = document.querySelector(".titre")
@@ -38,17 +39,23 @@ export default class Photographe {
         let myTagline = document.createElement('p')
         let myPrice = document.createElement('p')
         let myPara3 = document.createElement('p')
+        let myTagLink
         let myTags
     
         for (const [i, tag] of this.tags.entries()) {
+            myTagLink = document.createElement('a')
             myTags = document.createElement('span')
+            myTagLink.href = "#"
             myTags.textContent = "#" + this.tags[i]
             tagList.push(this.tags[i])
-            myPara3.appendChild(myTags)
+            myPara3.appendChild(myTagLink)
+            myTagLink.appendChild(myTags)
+            myTagLink.classList.add("tagLink")
             myTags.classList.add("tags")
         }
     
         myImg.src = "../images/Photographers/" + this.portrait
+        myImg.alt = this.name
         myName.textContent = this.name
         myCity.textContent = this.city + ", " + this.country
         myTagline.textContent = this.tagline
@@ -61,7 +68,7 @@ export default class Photographe {
         myPara3.classList.add("myTags")
     
         photographe.appendChild(myArticle)
-        photographe.appendChild(myImg)
+        photographe.appendChild(myImg)  
         myArticle.appendChild(myName)
         myArticle.appendChild(myCity)
         myArticle.appendChild(myTagline)
@@ -84,14 +91,19 @@ export default class Photographe {
             let myPara1 = document.createElement('p')
             let myPara2 = document.createElement('p')
             let myPara3 = document.createElement('p')
+            let myTagLink
             let myTags
     
             for (const [i, tag] of photographe.tags.entries()) {
+                myTagLink = document.createElement('a')
                 myTags = document.createElement('span')
+                myTagLink.href = "#"
                 myTags.textContent = "#" + photographe.tags[i]
                 tagList.push(photographe.tags[i])
-                myPara3.appendChild(myTags)
+                myPara3.appendChild(myTagLink)
+                myTagLink.appendChild(myTags)
                 myTags.classList.add("tags")
+                myTagLink.classList.add("tagLink")
             }
     
             myArticle.classList.add("detailsPhotographes")
@@ -122,14 +134,19 @@ export default class Photographe {
     filterTagList() {
         let myPara1 = document.createElement('p')
         let myTags
+        let myTagLink
     
         const filterTagList = [...new Set(tagList)]
     
         let e = 0
         for (const tag of filterTagList) {
+            myTagLink = document.createElement('a')
             myTags = document.createElement('span')
+            myTagLink.href = "#"
             myTags.textContent = "#" + this.strUcFirst(filterTagList[e])
-            myPara1.appendChild(myTags)
+            myPara1.appendChild(myTagLink)
+            myTagLink.appendChild(myTags)
+            myTagLink.classList.add("tagLink")
             myTags.classList.add("tags")
             myTags.classList.add("sortTag")
             myTags.setAttribute("name", tag)
@@ -232,15 +249,20 @@ export default class Photographe {
             let result = classes.toggle("open")
             if(result) {
                 arrow.classList.add("rotate")
+                triLink[0].href = "#"
+                triLink[1].href = "#"
+                triLink[2].href = "#"
                 option[0].classList.add("border")
                 option[1].classList.add("border")
                 option[2].classList.remove("border")
             } else {
                 arrow.classList.remove("rotate")
+                triLink[0].removeAttribute("href")
+                triLink[1].removeAttribute("href")
+                triLink[2].removeAttribute("href")
                 option[0].classList.remove("border")
                 option[1].classList.remove("border")
                 option[2].classList.remove("border")
-                
             }
         }
     }

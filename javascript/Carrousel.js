@@ -35,7 +35,7 @@ export default class Carrousel {
             carrousel.removeChild(myVideo)
         }
 
-        if (data.firstChild.src === "") {
+        if (data.firstChild.src.includes(".mp4") === true) {
             myVideo.controls = "controls"
             mySource.src = source.src
             mySource.type = "video/mp4"
@@ -64,6 +64,8 @@ export default class Carrousel {
 
                 let e = i
 
+
+                // ------------------ SUIVANT ------------------- //
                 suivant.addEventListener("click", function(){
                     e = e + 1
                     if (e >= dataMedia.length){
@@ -73,6 +75,18 @@ export default class Carrousel {
                     myCarrousel.displayMedia(dataMedia[e], title[e])
                 })
 
+                window.addEventListener("keydown", function(event){
+                    if(event.key === "ArrowRight") {
+                        e = e + 1
+                        if (e >= dataMedia.length){
+                            e = 0
+                        }
+
+                        myCarrousel.displayMedia(dataMedia[e], title[e])
+                    }
+                })
+
+                // ----------------- PRECEDENT ------------------ //
                 precedent.addEventListener("click", function(){         
                     e = e - 1 
                     if (e < 0){
@@ -81,8 +95,26 @@ export default class Carrousel {
                     
                     myCarrousel.displayMedia(dataMedia[e], title[e])
                 })
+
+                window.addEventListener("keydown", function(event){
+                    if(event.key === "ArrowLeft") {
+                        e = e - 1
+                        if (e < 0){
+                            e = dataMedia.length - 1
+                        }
+
+                        myCarrousel.displayMedia(dataMedia[e], title[e])
+                    }
+                })
             })
         } 
-        close.addEventListener("click", this.closeLightbox)
+        close.addEventListener("click", this.closeLightbox)  
+        
+        window.addEventListener("keydown", function(event){
+            const myCarrousel = new Carrousel(data)
+            if(event.key === "Escape") {
+                myCarrousel.closeLightbox()
+            }
+        })
     }
 }

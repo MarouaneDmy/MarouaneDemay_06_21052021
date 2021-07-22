@@ -10,6 +10,23 @@ h1 {
     }
 }
 
+.navbar {
+    display: none;
+    position: fixed;
+    background-color: lighten($color-secondary, 10%);
+    height: 30px;
+    width: 170px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    margin-top: 10px;
+    text-decoration: none;
+    p {
+        color: black;
+        font-weight: 600;
+    }
+}
+
 .tagList {
     display: flex;
     flex-wrap: wrap;
@@ -31,6 +48,12 @@ h1 {
             width: 400px;
         }
     }
+}
+
+.tagLink {
+    text-decoration: none;
+    margin-bottom: 10px;
+    height: 20px;
 }
 
 .tags {

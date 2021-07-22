@@ -95,6 +95,23 @@
     }
 }
 
+
+// Liens d'accessibilités 
+.triLink {
+    text-decoration: none;
+    height: 20px; 
+    color: white;
+}
+
+.tagLink {
+    text-decoration: none;
+    height: 20px;
+}
+
+.articleLink {
+    text-decoration: none;
+}
+
 .medias {
     display: flex;
     flex-wrap: wrap;
@@ -132,12 +149,13 @@
         padding-left: 10px;
         p {
             height: 40px;
-            width: 150px; 
+            width: 140px; 
             font-size: 18px;
             font-weight: 700;
             margin: 0;
             margin-top: 10px;
             padding-left: 10px;
+            text-align: left;
         }
         .border {
             border-bottom: 1px solid white;
@@ -387,9 +405,13 @@ background-color: #fff;
             object-fit: cover;
             border-radius: 5px;
             cursor: pointer;
-            @media only screen and (max-width: 500px) {
-                width: 335px;
-                height: 190px;
+            @media only screen and (max-width: 1024px) {
+                width: 500px;
+                height: 500px;
+            }
+            @media only screen and (max-width: 700px) {
+                width: 260px;
+                height: 260px;
             }
         }
         video {
@@ -399,9 +421,13 @@ background-color: #fff;
             object-fit: cover;
             border-radius: 5px;
             cursor: pointer;
-            @media only screen and (max-width: 500px) {
-                width: 335px;
-                height: 190px;
+            @media only screen and (max-width: 1024px) {
+                width: 500px;
+                height: 500px;
+            }
+            @media only screen and (max-width: 700px) {
+                width: 260px;
+                height: 260px;
             }
         }
         h2 {
@@ -411,7 +437,23 @@ background-color: #fff;
             margin: 0;
             margin-left: 100px;
             color: $color-primary;
+            @media only screen and (max-width: 1024px) {
+                margin-top: -200px;
+                margin-left: 200px;
+            }
+            @media only screen and (max-width: 700px) {
+                margin-top: 0px;
+                margin-left: 45px;
+                font-size: 18px;
+            }
         }
+        @media only screen and (max-width: 700px) {
+            width: 350px;
+            height: 350px;
+        }
+    }
+    @media only screen and (max-width: 1024px) {
+        overflow: visible;
     }
 }
 
@@ -423,6 +465,17 @@ background-color: #fff;
     top: 45%;
     bottom: 50%;
     cursor: pointer;
+    @media only screen and (max-width: 1024px) {
+        left: 120px;
+        top: 45%;
+        bottom: 50%;
+    }
+    @media only screen and (max-width: 700px) {
+        left: 20px;
+        top: 45%;
+        bottom: 50%;
+        font-size: 20px;
+    }
 }
 
 .arrow-right {
@@ -433,6 +486,17 @@ background-color: #fff;
     top: 45%;
     bottom: 50%;
     cursor: pointer;
+    @media only screen and (max-width: 1024px) {
+        right: 120px;
+        top: 45%;
+        bottom: 50%;
+    }
+    @media only screen and (max-width: 700px) {
+        right: 20px;
+        top: 45%;
+        bottom: 50%;
+        font-size: 20px;
+    }
 }
 
 // Croix de fermeture de la lightbox
@@ -445,6 +509,14 @@ background-color: #fff;
     opacity: 1;
     cursor: pointer;
     transform: scale(1);
+    @media only screen and (max-width: 1024px) {
+        top: 100px;
+        right: 120px;
+    }
+    @media only screen and (max-width: 700px) {
+        top: 40px;
+        right: 10px;
+    }
 }
 
 .closeCarrousel:before,
@@ -455,6 +527,9 @@ background-color: #fff;
     height: 33px;
     width: 3px;
     background-color: $color-primary;
+    @media only screen and (max-width: 700px) {
+        height: 20px;
+    }
 }
 
 .closeCarrousel:before {

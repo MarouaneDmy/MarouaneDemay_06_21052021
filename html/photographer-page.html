@@ -4,12 +4,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/svg" href="../images/logo.svg"/>
     <link rel="stylesheet" href="../css/style.css"/>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
     <title>Photographe</title>
 </head>
 <body>
-    <header>
+    <header role="banner">
         <p class="logo">
             <a href="../index.html"><img src="../images/logo.svg" alt="Fisheye Home page"></a>
         </p>
@@ -27,12 +28,12 @@
             <div class="tri">
                 <h2>Trier par</h2>
                 <div class="dropdown">
-                    <div class="trier">
-                        <p class="option popularite">Popularité</p>
-                        <p class="option date">Date</p>
-                        <p class="option titre">Titre</p>
+                    <button aria-label="Order By" role="listbox" class="trier">
+                        <p class="option popularite"><a class="triLink" aria-label="Popularité">Popularité</a></p>
+                        <p class="option date"><a class="triLink" aria-label="Date" >Date</a></p>
+                        <p class="option titre"><a class="triLink" aria-label="Titre">Titre</a></p>
                         <i id="arrow" class="fas fa-chevron-down" aria-hidden="true"></i>
-                    </div>
+                    </button>
                 </div>            
             </div>
 
@@ -45,21 +46,21 @@
             
         </section>  
 
-        <section class="bground">
+        <section class="bground" role="dialog">
             <div class="modal">
-                <span class="close"></span>
+                <span aria-label="Fermer" class="close"></span>
                 <div class="modal-body">
                     <label for="prenom">Prénom</label><br>
-                    <input name="prenom"><br>
+                    <input id="prenom" name="prenom" type="text"><br>
 
                     <label for="nom">Nom</label><br>
-                    <input name="nom"><br>
+                    <input id="nom" name="nom" type="text"><br>
 
                     <label for="email">Email</label><br>
-                    <input name="email"><br>
+                    <input id="email" name="email" type="email"><br>
 
                     <label for="message">Votre message</label><br>
-                    <input class="message" name="message"><br>
+                    <input id="message" class="message" name="message"><br>
 
                     <button class="envoyer" aria-label="Envoyer">
                         Envoyer
@@ -72,8 +73,8 @@
         <section class="lightbox">
             <div class="carrousel">
                 <span class="closeCarrousel"></span>
-                <i class='fas fa-chevron-left arrow-left'></i>
-                <i class='fas fa-chevron-right arrow-right'></i>
+                <i class='fas fa-chevron-left arrow-left' aria-label="Précédent"></i>
+                <i class='fas fa-chevron-right arrow-right' aria-label="Suivant"></i>
                 <div class="carrousel-body">
                     
                 </div>

@@ -89,6 +89,23 @@ h1 {
   }
 }
 
+.navbar {
+  display: none;
+  position: fixed;
+  background-color: #dc7b66;
+  height: 30px;
+  width: 170px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  margin-top: 10px;
+  text-decoration: none;
+}
+.navbar p {
+  color: black;
+  font-weight: 600;
+}
+
 .tagList {
   display: flex;
   flex-wrap: wrap;
@@ -114,6 +131,12 @@ h1 {
     justify-content: center;
     width: 400px;
   }
+}
+
+.tagLink {
+  text-decoration: none;
+  margin-bottom: 10px;
+  height: 20px;
 }
 
 .tags {
@@ -314,6 +337,21 @@ h1 {
   }
 }
 
+.triLink {
+  text-decoration: none;
+  height: 20px;
+  color: white;
+}
+
+.tagLink {
+  text-decoration: none;
+  height: 20px;
+}
+
+.articleLink {
+  text-decoration: none;
+}
+
 .medias {
   display: flex;
   flex-wrap: wrap;
@@ -369,12 +407,13 @@ h1 {
 }
 .dropdown .trier p {
   height: 40px;
-  width: 150px;
+  width: 140px;
   font-size: 18px;
   font-weight: 700;
   margin: 0;
   margin-top: 10px;
   padding-left: 10px;
+  text-align: left;
 }
 .dropdown .trier .border {
   border-bottom: 1px solid white;
@@ -651,10 +690,16 @@ h1 {
   border-radius: 5px;
   cursor: pointer;
 }
-@media only screen and (max-width: 500px) {
+@media only screen and (max-width: 1024px) {
   .carrousel-body img {
-    width: 335px;
-    height: 190px;
+    width: 500px;
+    height: 500px;
+  }
+}
+@media only screen and (max-width: 700px) {
+  .carrousel-body img {
+    width: 260px;
+    height: 260px;
   }
 }
 .carrousel-body video {
@@ -665,10 +710,16 @@ h1 {
   border-radius: 5px;
   cursor: pointer;
 }
-@media only screen and (max-width: 500px) {
+@media only screen and (max-width: 1024px) {
   .carrousel-body video {
-    width: 335px;
-    height: 190px;
+    width: 500px;
+    height: 500px;
+  }
+}
+@media only screen and (max-width: 700px) {
+  .carrousel-body video {
+    width: 260px;
+    height: 260px;
   }
 }
 .carrousel-body h2 {
@@ -678,6 +729,30 @@ h1 {
   margin: 0;
   margin-left: 100px;
   color: #901C1C;
+}
+@media only screen and (max-width: 1024px) {
+  .carrousel-body h2 {
+    margin-top: -200px;
+    margin-left: 200px;
+  }
+}
+@media only screen and (max-width: 700px) {
+  .carrousel-body h2 {
+    margin-top: 0px;
+    margin-left: 45px;
+    font-size: 18px;
+  }
+}
+@media only screen and (max-width: 700px) {
+  .carrousel-body {
+    width: 350px;
+    height: 350px;
+  }
+}
+@media only screen and (max-width: 1024px) {
+  .carrousel {
+    overflow: visible;
+  }
 }
 
 .arrow-left {
@@ -689,6 +764,21 @@ h1 {
   bottom: 50%;
   cursor: pointer;
 }
+@media only screen and (max-width: 1024px) {
+  .arrow-left {
+    left: 120px;
+    top: 45%;
+    bottom: 50%;
+  }
+}
+@media only screen and (max-width: 700px) {
+  .arrow-left {
+    left: 20px;
+    top: 45%;
+    bottom: 50%;
+    font-size: 20px;
+  }
+}
 
 .arrow-right {
   position: absolute;
@@ -698,6 +788,21 @@ h1 {
   top: 45%;
   bottom: 50%;
   cursor: pointer;
+}
+@media only screen and (max-width: 1024px) {
+  .arrow-right {
+    right: 120px;
+    top: 45%;
+    bottom: 50%;
+  }
+}
+@media only screen and (max-width: 700px) {
+  .arrow-right {
+    right: 20px;
+    top: 45%;
+    bottom: 50%;
+    font-size: 20px;
+  }
 }
 
 .closeCarrousel {
@@ -710,6 +815,18 @@ h1 {
   cursor: pointer;
   transform: scale(1);
 }
+@media only screen and (max-width: 1024px) {
+  .closeCarrousel {
+    top: 100px;
+    right: 120px;
+  }
+}
+@media only screen and (max-width: 700px) {
+  .closeCarrousel {
+    top: 40px;
+    right: 10px;
+  }
+}
 
 .closeCarrousel:before,
 .closeCarrousel:after {
@@ -719,6 +836,12 @@ h1 {
   height: 33px;
   width: 3px;
   background-color: #901C1C;
+}
+@media only screen and (max-width: 700px) {
+  .closeCarrousel:before,
+.closeCarrousel:after {
+    height: 20px;
+  }
 }
 
 .closeCarrousel:before {

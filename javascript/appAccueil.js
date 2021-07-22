@@ -1,4 +1,5 @@
 import DataManager from "./DataManager.js"
+import Navbar from "./Navbar.js"
 import Photographe from "./Photographe.js"
 
 (async function()  {
@@ -14,6 +15,10 @@ import Photographe from "./Photographe.js"
     photographe.displayPhotographers(foundPhotographer)
     photographe.filterTagList()
     photographe.sortByTag(data)
+
+    // NAVBAR
+    const navbar = new Navbar()
+    navbar.display()
 
 })()
 
