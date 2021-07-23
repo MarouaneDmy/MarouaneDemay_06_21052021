@@ -571,7 +571,7 @@ h1 {
 .modal {
   position: relative;
   width: 100%;
-  max-width: 500px;
+  max-width: 700px;
   background: #e18d7a;
   border-radius: 3px;
   box-shadow: 0 2px 7px 2px rgba(0, 0, 0, 0.2);
@@ -581,9 +581,15 @@ h1 {
 }
 .modal h2 {
   margin: 0;
-  margin-left: 25px;
+  margin-left: 35px;
   color: black;
   font-weight: 400;
+  font-size: 50px;
+}
+@media only screen and (max-width: 500px) {
+  .modal h2 {
+    margin-left: 15px;
+  }
 }
 .modal-body {
   padding: 15px 5%;
@@ -592,17 +598,29 @@ h1 {
 }
 .modal-body label {
   color: #312E2E;
+  font-size: 32px;
 }
 .modal-body input {
   margin: 3px 0px;
   width: 100%;
-  height: 35px;
+  height: 60px;
   border-radius: 5px;
   border: none;
   outline: none;
 }
+@media only screen and (max-width: 500px) {
+  .modal-body input {
+    margin-bottom: 20px;
+    margin-top: 10px;
+  }
+}
 .modal-body .message {
-  height: 100px;
+  height: 180px;
+}
+@media only screen and (max-width: 500px) {
+  .modal-body .message {
+    height: 200px;
+  }
 }
 .modal-body .envoyer {
   width: 170px;
@@ -615,12 +633,23 @@ h1 {
   font-family: "DM Sans", sans-serif;
   font-weight: 700;
   width: 150px;
-  height: 55px;
+  height: 65px;
   margin-top: 20px;
 }
 .modal-body .envoyer:hover {
   background-color: #D3573C;
   color: black;
+}
+@media only screen and (max-width: 500px) {
+  .modal-body .envoyer {
+    height: 30px;
+    margin-left: 85px;
+  }
+}
+@media only screen and (max-width: 500px) {
+  .modal {
+    height: 100%;
+  }
 }
 
 .close {
