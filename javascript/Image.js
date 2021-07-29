@@ -15,11 +15,12 @@ export default class Image extends Media {
         let myImg = document.createElement('img')
         let myTitle = document.createElement('h2')
         let myLikes = document.createElement('p')
-        let heart = document.createElement('i')
+        let heart = document.createElement('em')
 
         imgLink.classList.add("articleLink")
         myArticle.classList.add("detailsMedia")
         myTitle.classList.add("title")
+        myLikes.classList.add("myLikes")
         heart.classList.add("fas")
         heart.classList.add("fa-heart")
 
@@ -35,7 +36,7 @@ export default class Image extends Media {
 
         myArticle.appendChild(myTitle)
         myArticle.appendChild(myLikes)
-        myLikes.appendChild(heart)
+        myArticle.appendChild(heart)
 
         return myArticle
 

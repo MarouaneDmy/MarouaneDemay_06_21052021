@@ -17,34 +17,12 @@
     </header>
 
     <main>
+
         <section class="photographe">
             <button class="contacter modal-btn" aria-label="Contact Me">
                 Contactez-moi
             </button>
         </section>
-
-        <section class="medias">
-
-            <div class="tri">
-                <h2>Trier par</h2>
-                <div class="dropdown">
-                    <button aria-label="Order By" role="listbox" class="trier">
-                        <p class="option popularite"><a class="triLink" aria-label="Popularité">Popularité</a></p>
-                        <p class="option date"><a class="triLink" aria-label="Date" >Date</a></p>
-                        <p class="option titre"><a class="triLink" aria-label="Titre">Titre</a></p>
-                        <i id="arrow" class="fas fa-chevron-down" aria-hidden="true"></i>
-                    </button>
-                </div>            
-            </div>
-
-            <div class="photos">
-                
-            </div>
-        </section>
-
-        <section class="prix">
-            
-        </section>  
 
         <section class="bground" role="dialog">
             <div class="modal">
@@ -60,7 +38,7 @@
                     <input id="email" name="email" type="email"><br>
 
                     <label for="message">Votre message</label><br>
-                    <input id="message" class="message" name="message"><br>
+                    <textarea id="message" class="message" name="message"></textarea><br>
 
                     <button class="envoyer" aria-label="Envoyer">
                         Envoyer
@@ -70,11 +48,34 @@
             </div>
         </section>
 
+        <section class="medias">
+
+            <div class="tri">
+                <h2>Trier par</h2>
+                <div class="dropdown">
+                    <button aria-label="Order By" role="listbox" class="trier">
+                        <p class="option popularite"><a class="triLink" aria-label="Popularité">Popularité</a></p>
+                        <p class="option date"><a class="triLink" aria-label="Date" >Date</a></p>
+                        <p class="option titre"><a class="triLink" aria-label="Titre">Titre</a></p>
+                        <em id="arrow" class="fas fa-chevron-down" aria-hidden="true"></em>
+                    </button>
+                </div>            
+            </div>
+
+            <div class="photos">
+                
+            </div>
+        </section>
+
+        <section class="prix">
+            
+        </section>  
+
         <section class="lightbox">
             <div class="carrousel">
                 <span class="closeCarrousel"></span>
-                <i class='fas fa-chevron-left arrow-left' aria-label="Précédent"></i>
-                <i class='fas fa-chevron-right arrow-right' aria-label="Suivant"></i>
+                <em class='fas fa-chevron-left arrow-left' aria-label="Précédent"></em>
+                <em class='fas fa-chevron-right arrow-right' aria-label="Suivant"></em>
                 <div class="carrousel-body">
                     
                 </div>

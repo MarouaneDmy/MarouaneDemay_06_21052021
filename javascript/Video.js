@@ -16,11 +16,12 @@ export default class Video extends Media {
         let mySource = document.createElement('source')
         let myTitle = document.createElement('h2')
         let myLikes = document.createElement('p')
-        let heart = document.createElement('i')
+        let heart = document.createElement('em')
 
         vidLink.classList.add("articleLink")
         myArticle.classList.add("detailsMedia")
         myTitle.classList.add("title")
+        myLikes.classList.add("myLikes")
         mySource.classList.add("source")
         heart.classList.add("fas")
         heart.classList.add("fa-heart")
@@ -39,7 +40,7 @@ export default class Video extends Media {
         
         myArticle.appendChild(myTitle)
         myArticle.appendChild(myLikes)
-        myLikes.appendChild(heart)
+        myArticle.appendChild(heart)
         
         myVid.appendChild(mySource)
 

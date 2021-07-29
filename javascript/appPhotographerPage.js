@@ -23,6 +23,8 @@ import Carrousel from "./Carrousel.js"
     const arrayMedia = photographe.medias
     photographe.sortMedias(foundMediaByPhotographerId)
     photographe.additionOfLikes(foundMediaByPhotographerId)
+    photographe.addLike()
+    photographe.tagRedirection(data)
 
     // MODAL
     const modal = new Modal(foundPhotographerById)

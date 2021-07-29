@@ -3,6 +3,7 @@ const modal = document.querySelector(".modal")
 const modalbg = document.querySelector(".bground")
 const modalBtn = document.querySelector(".modal-btn")
 const modalClose = document.querySelector(".close")
+const sendBtn = document.querySelector(".envoyer")
 
 export default class Modal {
   constructor(data) {
@@ -30,6 +31,28 @@ export default class Modal {
     modal.prepend(myTitle)   
   }
 
+  sendData() {
+    sendBtn.addEventListener("click", function(){
+      const modal = new Modal(this.name)
+      const prenom = document.querySelector("#prenom")
+      const nom = document.querySelector("#nom")
+      const email = document.querySelector("#email")
+      const message = document.querySelector("#message")
+
+      console.log(prenom.value)
+      console.log(nom.value)
+      console.log(email.value)
+      console.log(message.value)
+
+      prenom.value = ""
+      nom.value = ""
+      email.value = ""
+      message.value = ""
+
+      modal.closeModal()
+    })
+  }
+
   display() {
 
     this.addPhotographerName()
@@ -45,7 +68,9 @@ export default class Modal {
       if(event.key === "Escape") {
           modal.closeModal()
       }
-  })
+    })
+
+    this.sendData()
     
   }
 }

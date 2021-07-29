@@ -45,13 +45,17 @@ export default class Photographe {
         for (const [i, tag] of this.tags.entries()) {
             myTagLink = document.createElement('a')
             myTags = document.createElement('span')
-            myTagLink.href = "#"
+            myTagLink.href = "../index.html?tag=" + myTagLink.getAttribute("name")
             myTags.textContent = "#" + this.tags[i]
             tagList.push(this.tags[i])
             myPara3.appendChild(myTagLink)
             myTagLink.appendChild(myTags)
             myTagLink.classList.add("tagLink")
+            myTagLink.classList.add("sortTag")
             myTags.classList.add("tags")
+            myTags.classList.add("sortTag")
+            myTagLink.setAttribute("name", tag)
+            myTags.setAttribute("name", tag)
         }
     
         myImg.src = "../images/Photographers/" + this.portrait
@@ -97,13 +101,16 @@ export default class Photographe {
             for (const [i, tag] of photographe.tags.entries()) {
                 myTagLink = document.createElement('a')
                 myTags = document.createElement('span')
-                myTagLink.href = "#"
                 myTags.textContent = "#" + photographe.tags[i]
                 tagList.push(photographe.tags[i])
                 myPara3.appendChild(myTagLink)
                 myTagLink.appendChild(myTags)
                 myTags.classList.add("tags")
+                myTags.classList.add("sortTag")
                 myTagLink.classList.add("tagLink")
+                myTagLink.setAttribute("name", tag)
+                myTagLink.href = "../index.html?tag=" + myTagLink.getAttribute("name")
+                myTags.setAttribute("name", tag)
             }
     
             myArticle.classList.add("detailsPhotographes")
@@ -142,11 +149,12 @@ export default class Photographe {
         for (const tag of filterTagList) {
             myTagLink = document.createElement('a')
             myTags = document.createElement('span')
-            myTagLink.href = "#"
             myTags.textContent = "#" + this.strUcFirst(filterTagList[e])
             myPara1.appendChild(myTagLink)
             myTagLink.appendChild(myTags)
             myTagLink.classList.add("tagLink")
+            myTagLink.setAttribute("name", tag)
+            myTagLink.href = "../index.html?tag=" + myTagLink.getAttribute("name")
             myTags.classList.add("tags")
             myTags.classList.add("sortTag")
             myTags.setAttribute("name", tag)
@@ -175,18 +183,54 @@ export default class Photographe {
         }
     } 
 
-    sortByTag(data) {
+    sortByTag(data, tag) {
         let photographerTags = document.querySelectorAll(".sortTag")
-        let photographerTag
 
         for (const tag of photographerTags) {
-            tag.addEventListener("click", function(){   
-                photographerTag = tag.getAttribute("name") 
+ /*             tag.addEventListener("click", function(){   
+                let photographerTag = tag.getAttribute("name") 
                 const foundPhotographerByTag = data.photographers.filter(photographers => photographers.tags.includes(photographerTag))
                 const photographe = new Photographe(foundPhotographerByTag)
                 photographe.displayPhotographers(foundPhotographerByTag)
+                photographe.sortByTag(data)
+            }) */
+
+            window.addEventListener("keydown", function(event){
+                let elemCourant = document.activeElement;
+
+                if(elemCourant.classList.contains("tagLink") && event.key === "Enter") {
+                    let photographerTag = elemCourant.getAttribute("name") 
+                    document.location.href = "../index.html?tag=" + elemCourant.setAttribute("name")
+                    const foundPhotographerByTag = data.photographers.filter(photographers => photographers.tags.includes(photographerTag))
+                    const photographe = new Photographe(foundPhotographerByTag)
+                    photographe.displayPhotographers(foundPhotographerByTag)      
+                }
             })
         }
+
+        if(tag !== null){
+            const foundPhotographerByTag = data.photographers.filter(photographers => photographers.tags.includes(tag))
+            this.displayPhotographers(foundPhotographerByTag)
+        }
+    }
+
+    tagRedirection() {
+        let photographerTags = document.querySelectorAll(".sortTag")
+
+        for (const tag of photographerTags) {
+            tag.addEventListener("click", function(){   
+                let photographerTag = tag.getAttribute("name") 
+                tag.href = "../index.html?tag=" + photographerTag
+            })
+        }
+    }
+
+    tagURL(data, tag) {
+        let photographerTag = tag 
+        const foundPhotographerByTag = data.photographers.filter(photographers => photographers.tags.includes(photographerTag))
+        const photographe = new Photographe(foundPhotographerByTag)
+        photographe.displayPhotographers(foundPhotographerByTag)
+        photographe.sortByTag(data)
     }
 
     sortByLikes(data) {
@@ -210,7 +254,32 @@ export default class Photographe {
             return a.title.localeCompare(b.title);
         })
 
-    } 
+    }
+    
+    addLike(data) {
+        const totalLikes = document.querySelector(".likes")
+        let myLikes = document.querySelectorAll(".myLikes")
+
+        console.log(myLikes)
+        for (const like of myLikes) {
+            let i = 0
+            like.addEventListener("click", function(){   
+                let nombre = parseInt(like.textContent)
+                let total = parseInt(totalLikes.textContent)       
+                
+                if(i == 0) {
+                    nombre = nombre + 1
+                    totalLikes.textContent = total + 1
+                    i = i + 1
+                } else {
+                    nombre = nombre - 1
+                    totalLikes.textContent = total - 1
+                    i = i - 1
+                }
+                like.textContent = nombre
+            })
+        }
+    }
 
     additionOfLikes(data) {
 
@@ -257,6 +326,7 @@ export default class Photographe {
                 option[2].classList.remove("border")
             } else {
                 arrow.classList.remove("rotate")
+                popularite.classList.remove("popularite")
                 triLink[0].removeAttribute("href")
                 triLink[1].removeAttribute("href")
                 triLink[2].removeAttribute("href")
@@ -275,6 +345,7 @@ export default class Photographe {
             photographe.setMedia(data)
             trier.prepend(popularite)
             photographe.trierOpenClose()
+            photographe.addLike()
             
             const carrousel = new Carrousel()
             const arrayMedia = photographe.medias
@@ -287,6 +358,7 @@ export default class Photographe {
             photographe.setMedia(data)
             trier.prepend(date)
             photographe.trierOpenClose()
+            photographe.addLike()
 
             const carrousel = new Carrousel()
             const arrayMedia = photographe.medias
@@ -299,6 +371,7 @@ export default class Photographe {
             photographe.setMedia(data)
             trier.prepend(titre)
             photographe.trierOpenClose()
+            photographe.addLike()
 
             const carrousel = new Carrousel()
             const arrayMedia = photographe.medias
