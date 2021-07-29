@@ -508,12 +508,17 @@ h1 {
   margin-left: 5px;
 }
 @media only screen and (max-width: 500px) {
-  .photos .detailsMedia {
-    bottom: -48px;
+  .photos .detailsMedia em {
+    bottom: -27px;
   }
 }
 .photos .detailsMedia .myLikes {
   cursor: pointer;
+}
+@media only screen and (max-width: 500px) {
+  .photos .detailsMedia .myLikes {
+    bottom: -45px;
+  }
 }
 @media only screen and (max-width: 500px) {
   .photos .detailsMedia {
@@ -595,6 +600,7 @@ h1 {
 @media only screen and (max-width: 500px) {
   .modal h2 {
     margin-left: 15px;
+    font-size: 34px;
   }
 }
 .modal-body {
@@ -605,6 +611,11 @@ h1 {
 .modal-body label {
   color: #312E2E;
   font-size: 32px;
+}
+@media only screen and (max-width: 500px) {
+  .modal-body label {
+    font-size: 24px;
+  }
 }
 .modal-body input {
   margin: 3px 0px;
@@ -619,6 +630,7 @@ h1 {
   .modal-body input {
     margin-bottom: 20px;
     margin-top: 10px;
+    height: 40px;
   }
 }
 .modal-body .message {
@@ -630,7 +642,8 @@ h1 {
 }
 @media only screen and (max-width: 500px) {
   .modal-body .message {
-    height: 200px;
+    margin-top: 10px;
+    height: 170px;
   }
 }
 .modal-body .envoyer {

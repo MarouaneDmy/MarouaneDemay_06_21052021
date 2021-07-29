@@ -240,13 +240,16 @@
             bottom: 4px;
             color: $color-primary;
             margin-left: 5px;
-        }
-        @media only screen and (max-width: 500px) {
-            bottom: -48px;
-        }
+            @media only screen and (max-width: 500px) {
+                bottom: -27px;
+            }
+        } 
         .myLikes {
             cursor: pointer;
-        }
+            @media only screen and (max-width: 500px) {
+                bottom: -45px;
+            }
+        }       
         @media only screen and (max-width: 500px) {
             width: 335px;
             height: 190px;
@@ -322,6 +325,7 @@
         font-size: 50px;
         @media only screen and (max-width: 500px) {
             margin-left: 15px;
+            font-size: 34px;
         }
     }
     &-body {
@@ -331,6 +335,9 @@
         label {
             color: #312E2E;
             font-size: 32px;
+            @media only screen and (max-width: 500px) {
+                font-size: 24px;
+            }
         }
         input {
             margin: 3px 0px;
@@ -343,6 +350,7 @@
             @media only screen and (max-width: 500px) {
                 margin-bottom: 20px;
                 margin-top: 10px;
+                height: 40px;
             }
         }
         .message {
@@ -352,7 +360,8 @@
             border: none;
             font-size: 26px;
             @media only screen and (max-width: 500px) {
-                height: 200px;
+                margin-top: 10px;
+                height: 170px;
             }
         }
         .envoyer {
