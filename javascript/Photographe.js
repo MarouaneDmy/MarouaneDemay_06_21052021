@@ -109,7 +109,7 @@ export default class Photographe {
                 myTags.classList.add("sortTag")
                 myTagLink.classList.add("tagLink")
                 myTagLink.setAttribute("name", tag)
-                myTagLink.href = "index.html?tag=" + myTagLink.getAttribute("name")
+                myTagLink.href = "./index.html?tag=" + myTagLink.getAttribute("name")
                 myTags.setAttribute("name", tag)
             }
     
@@ -154,7 +154,7 @@ export default class Photographe {
             myTagLink.appendChild(myTags)
             myTagLink.classList.add("tagLink")
             myTagLink.setAttribute("name", tag)
-            myTagLink.href = "index.html?tag=" + myTagLink.getAttribute("name")
+            myTagLink.href = "./index.html?tag=" + myTagLink.getAttribute("name")
             myTags.classList.add("tags")
             myTags.classList.add("sortTag")
             myTags.setAttribute("name", tag)
