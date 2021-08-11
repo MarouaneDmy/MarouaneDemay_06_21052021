@@ -20,6 +20,7 @@ let tagList = []
 
 export default class Photographe {
     constructor(data) {
+        this.data = data
         this.name = data.name
         this.id = data.id
         this.city = data.city
@@ -163,6 +164,21 @@ export default class Photographe {
         navTag.appendChild(myPara1)
     }
 
+    setCarrousel(){
+        const carrousel = new Carrousel()
+        carrousel.display(this.medias)
+    }
+
+    displayMedias() {
+        if (photos != "") {
+            photos.innerHTML = "";
+        } 
+
+        for (const [i, dataMedia] of this.medias.entries()) {
+            dataMedia.display(i)
+        }
+    }
+
     setMedia(data) {
         if (photos != "") {
             photos.innerHTML = "";
@@ -172,8 +188,10 @@ export default class Photographe {
 
         for (const dataMedia of data) {
 
-            type = "image"
-    
+            if (dataMedia.image !== undefined) {
+                type = "image"
+            }
+            
             if (dataMedia.image === undefined) {
                 type = "video"
             } 
@@ -187,14 +205,7 @@ export default class Photographe {
         let photographerTags = document.querySelectorAll(".sortTag")
 
         for (const tag of photographerTags) {
- /*             tag.addEventListener("click", function(){   
-                let photographerTag = tag.getAttribute("name") 
-                const foundPhotographerByTag = data.photographers.filter(photographers => photographers.tags.includes(photographerTag))
-                const photographe = new Photographe(foundPhotographerByTag)
-                photographe.displayPhotographers(foundPhotographerByTag)
-                photographe.sortByTag(data)
-            }) */
-
+ 
             window.addEventListener("keydown", function(event){
                 let elemCourant = document.activeElement;
 
@@ -203,7 +214,7 @@ export default class Photographe {
                     document.location.href = "index.html?tag=" + elemCourant.setAttribute("name")
                     const foundPhotographerByTag = data.photographers.filter(photographers => photographers.tags.includes(photographerTag))
                     const photographe = new Photographe(foundPhotographerByTag)
-                    photographe.displayPhotographers(foundPhotographerByTag)      
+                    photographe.displayPhotographers(foundPhotographerByTag)     
                 }
             })
         }
@@ -233,24 +244,25 @@ export default class Photographe {
         photographe.sortByTag(data)
     }
 
-    sortByLikes(data) {
+    sortByLikes() {
 
-        data.sort(function(a, b) {
+        this.medias.sort(function(a, b) {
             return b.likes - a.likes
         })
+
     }
 
-    sortByDate(data) {
+    sortByDate() {
 
-        data.sort(function(a, b) {
+        this.medias.sort(function(a, b) {
             return new Date(b.date) - new Date(a.date);
         })
         
     } 
 
-    sortByTitre(data) {
+    sortByTitre() {
 
-        data.sort(function (a, b) {
+        this.medias.sort(function (a, b) {
             return a.title.localeCompare(b.title);
         })
 
@@ -259,8 +271,7 @@ export default class Photographe {
     addLike(data) {
         const totalLikes = document.querySelector(".likes")
         let myLikes = document.querySelectorAll(".myLikes")
-
-        console.log(myLikes)
+        
         for (const like of myLikes) {
             let i = 0
             like.addEventListener("click", function(){   
@@ -337,46 +348,39 @@ export default class Photographe {
         }
     }
 
-    sortMedias(data) {
+    initMedia(){
+        this.displayMedias()
+        this.trierOpenClose()
+        this.addLike()
+        this.setCarrousel()
+    }
 
-        popularite.addEventListener("click", function(){
-            const photographe = new Photographe(data)
-            photographe.sortByLikes(data)
-            photographe.setMedia(data)
-            trier.prepend(popularite)
-            photographe.trierOpenClose()
-            photographe.addLike()
-            
-            const carrousel = new Carrousel()
-            const arrayMedia = photographe.medias
-            carrousel.display(arrayMedia)
-        })
+    onClickTriPopularite() {
+        this.sortByLikes()
+        trier.prepend(popularite)
+        this.initMedia()   
+    }
 
-        date.addEventListener("click", function(){
-            const photographe = new Photographe(data)
-            photographe.sortByDate(data)
-            photographe.setMedia(data)
-            trier.prepend(date)
-            photographe.trierOpenClose()
-            photographe.addLike()
+    onClickTriDate() {
+        this.sortByDate()
+        trier.prepend(date)
+        this.initMedia()   
+    }
 
-            const carrousel = new Carrousel()
-            const arrayMedia = photographe.medias
-            carrousel.display(arrayMedia)
-        })
+    onClickTriTitre() {
+        this.sortByTitre()
+        trier.prepend(titre)
+        this.initMedia()   
+    }
 
-        titre.addEventListener("click", function(){
-            const photographe = new Photographe(data)
-            photographe.sortByTitre(data)
-            photographe.setMedia(data)
-            trier.prepend(titre)
-            photographe.trierOpenClose()
-            photographe.addLike()
+    sortMedias() {
 
-            const carrousel = new Carrousel()
-            const arrayMedia = photographe.medias
-            carrousel.display(arrayMedia)
-        })  
+        popularite.addEventListener("click", this.onClickTriPopularite.bind(this))
+
+        date.addEventListener("click", this.onClickTriDate.bind(this))
+
+        titre.addEventListener("click", this.onClickTriTitre.bind(this))
+        
     }
 }
 

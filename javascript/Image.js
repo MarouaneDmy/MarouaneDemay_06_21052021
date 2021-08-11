@@ -9,7 +9,7 @@ export default class Image extends Media {
     }
 
     // Fais apparaître les images liés à l'ID du photographe
-    display() {
+    display(index) {
         let myArticle = document.createElement('article')
         let imgLink = document.createElement('a')
         let myImg = document.createElement('img')
@@ -18,7 +18,10 @@ export default class Image extends Media {
         let heart = document.createElement('em')
 
         imgLink.classList.add("articleLink")
+        imgLink.dataset.index = index
         myArticle.classList.add("detailsMedia")
+        myImg.classList.add("mediaList")
+        myImg.dataset.index = index
         myTitle.classList.add("title")
         myLikes.classList.add("myLikes")
         heart.classList.add("fas")
@@ -38,7 +41,21 @@ export default class Image extends Media {
         myArticle.appendChild(myLikes)
         myArticle.appendChild(heart)
 
-        return myArticle
+    }
 
+    displayLightbox() {
+        const carrousel = document.querySelector(".carrousel-body")
+        let myImage = document.createElement('img')
+        let myTitle = document.createElement('h2')
+
+        if (carrousel != "") {
+            carrousel.innerHTML = "";
+        }
+
+        myImage.src = "../images/medias/" + data.image
+        carrousel.appendChild(myImage)
+
+        myTitle.textContent = data.title
+        carrousel.appendChild(myTitle)
     }
 }

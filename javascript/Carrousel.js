@@ -1,4 +1,3 @@
-const lightbox_btn = document.querySelectorAll(".lightbox-btn")
 const lightbox = document.querySelector(".lightbox")
 const close = document.querySelector(".closeCarrousel")
 const precedent = document.querySelector(".arrow-left")
@@ -15,11 +14,10 @@ export default class Carrousel {
         lightbox.style.display = "none"
     }
 
-    displayMedia(data, title) {
+    displayMedia(data) {
         const carrousel = document.querySelector(".carrousel-body")
-        const source = document.querySelector(".source")
-        let myImage = document.createElement('img')
         let myVideo = document.createElement('video')
+        let myImage = document.createElement('img')
         let mySource = document.createElement('source')
         let myTitle = document.createElement('h2')
 
@@ -27,17 +25,17 @@ export default class Carrousel {
             carrousel.innerHTML = "";
         }
 
-        if (data.firstChild.src !== "") {
-            myImage.src = data.firstChild.src
+        if (data.image !== undefined) {
+            myImage.src = "../images/medias/" + data.image
             carrousel.appendChild(myImage)
 
             carrousel.appendChild(myVideo)
             carrousel.removeChild(myVideo)
         }
-
-        if (data.firstChild.src.includes(".mp4") === true) {
+        
+        if (data.image === undefined) {
             myVideo.controls = "controls"
-            mySource.src = source.src
+            mySource.src = "../images/medias/" + data.video
             mySource.type = "video/mp4"
 
             carrousel.appendChild(myVideo)
@@ -45,25 +43,26 @@ export default class Carrousel {
 
             carrousel.appendChild(myImage)
             carrousel.removeChild(myImage)
-        }
+        } 
 
-        myTitle.textContent = title.innerHTML
+        myTitle.textContent = data.title
         carrousel.appendChild(myTitle)
     }
 
     display(data) {
-        const dataMedia = data
-        const title = document.querySelectorAll(".title")
+        const dataMedia = document.querySelectorAll(".mediaList")
 
-        for (let i = 0; i < dataMedia.length; i++) {    
-
-            dataMedia[i].firstChild.addEventListener("click", function(){
+        window.addEventListener("keydown", function(event){
+            let elemCourant = document.activeElement;
+            console.log(elemCourant)
+           
+            if(elemCourant.classList.contains("articleLink") && event.key === "Enter") {
+                const i = elemCourant.dataset.index
                 const myCarrousel = new Carrousel(data)
                 myCarrousel.launchLightbox()
-                myCarrousel.displayMedia(dataMedia[i], title[i])
+                myCarrousel.displayMedia(data[i])
 
-                let e = i
-
+                let e = parseInt(i)
 
                 // ------------------ SUIVANT ------------------- //
                 suivant.addEventListener("click", function(){
@@ -72,17 +71,17 @@ export default class Carrousel {
                         e = 0
                     }
 
-                    myCarrousel.displayMedia(dataMedia[e], title[e])
+                    myCarrousel.displayMedia(data[e])
                 })
 
                 window.addEventListener("keydown", function(event){
                     if(event.key === "ArrowRight") {
                         e = e + 1
+                        
                         if (e >= dataMedia.length){
                             e = 0
                         }
-
-                        myCarrousel.displayMedia(dataMedia[e], title[e])
+                        myCarrousel.displayMedia(data[e])
                     }
                 })
 
@@ -93,7 +92,7 @@ export default class Carrousel {
                         e = dataMedia.length - 1
                     }   
                     
-                    myCarrousel.displayMedia(dataMedia[e], title[e])
+                    myCarrousel.displayMedia(data[e])
                 })
 
                 window.addEventListener("keydown", function(event){
@@ -103,11 +102,67 @@ export default class Carrousel {
                             e = dataMedia.length - 1
                         }
 
-                        myCarrousel.displayMedia(dataMedia[e], title[e])
+                        myCarrousel.displayMedia(data[e])
                     }
                 })
+            }
+        })
+        
+        for (let i = 0; i < dataMedia.length; i++) {
+
+            dataMedia[i].addEventListener("click", function(event){
+                const myCarrousel = new Carrousel(data)
+                myCarrousel.launchLightbox()
+                console.log(event.currentTarget.dataset.index)
+                myCarrousel.displayMedia(data[i])
+
+                let e = parseInt(event.currentTarget.dataset.index)
+
+                // ------------------ SUIVANT ------------------- //
+                suivant.addEventListener("click", function(){
+                    e = e + 1
+                    if (e >= dataMedia.length){
+                        e = 0
+                    }
+
+                    myCarrousel.displayMedia(data[e])
+                })
+
+                window.addEventListener("keydown", function(event){
+                    if(event.key === "ArrowRight") {
+                        e = e + 1
+                        
+                        if (e >= dataMedia.length){
+                            e = 0
+                        }
+                        myCarrousel.displayMedia(data[e])
+                    }
+                })
+
+                // ----------------- PRECEDENT ------------------ //
+                precedent.addEventListener("click", function(){         
+                    e = e - 1 
+                    if (e < 0){
+                        e = dataMedia.length - 1
+                    }   
+                    
+                    myCarrousel.displayMedia(data[e])
+                })
+
+                window.addEventListener("keydown", function(event){
+                    if(event.key === "ArrowLeft") {
+                        e = e - 1
+                        if (e < 0){
+                            e = dataMedia.length - 1
+                        }
+
+                        myCarrousel.displayMedia(data[e])
+                    }
+                })
+
             })
-        } 
+
+        }
         close.addEventListener("click", this.closeLightbox)  
         
         window.addEventListener("keydown", function(event){

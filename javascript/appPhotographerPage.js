@@ -18,10 +18,11 @@ import Carrousel from "./Carrousel.js"
     const photographe = new Photographe(foundPhotographerById)
     photographe.trierOpenClose()
     photographe.display()
+    photographe.sortMedias()
     photographe.setMedia(foundMediaByPhotographerId)
+    photographe.displayMedias()
     
     const arrayMedia = photographe.medias
-    photographe.sortMedias(foundMediaByPhotographerId)
     photographe.additionOfLikes(foundMediaByPhotographerId)
     photographe.addLike()
     photographe.tagRedirection(data)
@@ -33,6 +34,7 @@ import Carrousel from "./Carrousel.js"
     // CARROUSEL 
     const carrousel = new Carrousel()
     carrousel.display(arrayMedia)
+
 })()
 
 

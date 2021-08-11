@@ -8,7 +8,7 @@ export default class Video extends Media {
         this.video = data.video      
     }
 
-    display() {
+    display(index) {
 
         let myArticle = document.createElement('article')
         let vidLink = document.createElement('a')
@@ -18,8 +18,10 @@ export default class Video extends Media {
         let myLikes = document.createElement('p')
         let heart = document.createElement('em')
 
-        vidLink.classList.add("articleLink")
         myArticle.classList.add("detailsMedia")
+        myVid.classList.add("articleLink")
+        myVid.classList.add("mediaList")
+        myVid.dataset.index = index
         myTitle.classList.add("title")
         myLikes.classList.add("myLikes")
         mySource.classList.add("source")
@@ -43,8 +45,27 @@ export default class Video extends Media {
         myArticle.appendChild(heart)
         
         myVid.appendChild(mySource)
-
-        return myArticle
              
+    }
+
+    displayLightbox() {
+        const carrousel = document.querySelector(".carrousel-body")
+        let myVideo = document.createElement('video')
+        let mySource = document.createElement('source')
+        let myTitle = document.createElement('h2')
+
+        if (carrousel != "") {
+            carrousel.innerHTML = "";
+        }
+
+        myVideo.controls = "controls"
+        mySource.src = "../images/medias/" + data.video
+        mySource.type = "video/mp4"
+
+        carrousel.appendChild(myVideo)
+        myVideo.appendChild(mySource)
+
+        myTitle.textContent = data.title
+        carrousel.appendChild(myTitle)
     }
 }
