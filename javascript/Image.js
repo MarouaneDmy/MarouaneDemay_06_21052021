@@ -30,6 +30,7 @@ export default class Image extends Media {
         imgLink.href = "#"
         imgLink.src = "../images/medias/" + this.image
         myImg.src = "../images/medias/" + this.image
+        myImg.alt = "Photo" + this.title
         myTitle.textContent = this.title
         myLikes.textContent = this.likes
 
@@ -41,21 +42,5 @@ export default class Image extends Media {
         myArticle.appendChild(myLikes)
         myArticle.appendChild(heart)
 
-    }
-
-    displayLightbox() {
-        const carrousel = document.querySelector(".carrousel-body")
-        let myImage = document.createElement('img')
-        let myTitle = document.createElement('h2')
-
-        if (carrousel != "") {
-            carrousel.innerHTML = "";
-        }
-
-        myImage.src = "../images/medias/" + data.image
-        carrousel.appendChild(myImage)
-
-        myTitle.textContent = data.title
-        carrousel.appendChild(myTitle)
     }
 }

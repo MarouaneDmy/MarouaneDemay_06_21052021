@@ -11,7 +11,6 @@ export default class Video extends Media {
     display(index) {
 
         let myArticle = document.createElement('article')
-        let vidLink = document.createElement('a')
         let myVid = document.createElement('video')
         let mySource = document.createElement('source')
         let myTitle = document.createElement('h2')
@@ -28,17 +27,15 @@ export default class Video extends Media {
         heart.classList.add("fas")
         heart.classList.add("fa-heart")
 
-        vidLink.href = "#"
-        vidLink.src = "../images/medias/" + this.video
         mySource.src = "../images/medias/" + this.video
         mySource.type = "video/mp4"
+        myVid.setAttribute("aria-label", this.title)
         myTitle.textContent = this.title
         myLikes.textContent = this.likes
 
         photos.appendChild(myArticle)
 
-        myArticle.appendChild(vidLink)
-        vidLink.appendChild(myVid)
+        myArticle.appendChild(myVid)
         
         myArticle.appendChild(myTitle)
         myArticle.appendChild(myLikes)
@@ -46,26 +43,5 @@ export default class Video extends Media {
         
         myVid.appendChild(mySource)
              
-    }
-
-    displayLightbox() {
-        const carrousel = document.querySelector(".carrousel-body")
-        let myVideo = document.createElement('video')
-        let mySource = document.createElement('source')
-        let myTitle = document.createElement('h2')
-
-        if (carrousel != "") {
-            carrousel.innerHTML = "";
-        }
-
-        myVideo.controls = "controls"
-        mySource.src = "../images/medias/" + data.video
-        mySource.type = "video/mp4"
-
-        carrousel.appendChild(myVideo)
-        myVideo.appendChild(mySource)
-
-        myTitle.textContent = data.title
-        carrousel.appendChild(myTitle)
     }
 }

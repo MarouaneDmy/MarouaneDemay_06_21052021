@@ -25,7 +25,11 @@ h1 {
         color: black;
         font-weight: 600;
     }
+    &:focus {
+        border: 1px $color-primary solid;
+    }
 }
+
 
 .tagList {
     display: flex;
@@ -50,10 +54,17 @@ h1 {
     }
 }
 
+.photographerLink:focus {
+    border: 1px $color-primary solid;
+}
+
 .tagLink {
     text-decoration: none;
     margin-bottom: 10px;
     height: 20px;
+    &:focus {
+        border: 1px $color-primary solid;
+    }
 }
 
 .tags {

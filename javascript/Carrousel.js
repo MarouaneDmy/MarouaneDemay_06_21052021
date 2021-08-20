@@ -54,7 +54,6 @@ export default class Carrousel {
 
         window.addEventListener("keydown", function(event){
             let elemCourant = document.activeElement;
-            console.log(elemCourant)
            
             if(elemCourant.classList.contains("articleLink") && event.key === "Enter") {
                 const i = elemCourant.dataset.index

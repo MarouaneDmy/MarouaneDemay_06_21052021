@@ -16,8 +16,6 @@ export default class MediaFactory {
             return new Video(data)
         } 
     }
-
-    
 }
 
 

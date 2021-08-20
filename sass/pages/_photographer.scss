@@ -135,6 +135,12 @@
     }
 }
 
+.articleLink:focus {
+    border: 2px $color-primary solid;
+}
+
+
+
 .dropdown {
     position: relative;
     margin-top: 8px;

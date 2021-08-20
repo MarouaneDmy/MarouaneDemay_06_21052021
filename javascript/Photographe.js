@@ -60,7 +60,7 @@ export default class Photographe {
         }
     
         myImg.src = "../images/Photographers/" + this.portrait
-        myImg.alt = this.name
+        myImg.alt = "Photo de profil de " + this.name
         myName.textContent = this.name
         myCity.textContent = this.city + ", " + this.country
         myTagline.textContent = this.tagline
@@ -109,16 +109,17 @@ export default class Photographe {
                 myTags.classList.add("tags")
                 myTags.classList.add("sortTag")
                 myTagLink.classList.add("tagLink")
-                myTagLink.setAttribute("name", tag)
-                myTagLink.href = "./index.html?tag=" + myTagLink.getAttribute("name")
-                myTags.setAttribute("name", tag)
+                myTagLink.href = "./index.html?tag=" + tag
+                myTags.setAttribute("aria-labelledby", tag)
             }
     
             myArticle.classList.add("detailsPhotographes")
+            myLink.classList.add("photographerLink")
             myPara2.classList.add("price")
     
             myLink.href = "./html/photographer-page.html?id=" + photographe.id
             myImg.src = "images/Photographers/" + photographe.portrait
+            myImg.alt = "Photo de profil de " + photographe.name
             myH2.textContent = photographe.name
             myH3.textContent = photographe.city + ", " + photographe.country
             myPara1.textContent = photographe.tagline
@@ -154,11 +155,10 @@ export default class Photographe {
             myPara1.appendChild(myTagLink)
             myTagLink.appendChild(myTags)
             myTagLink.classList.add("tagLink")
-            myTagLink.setAttribute("name", tag)
-            myTagLink.href = "./index.html?tag=" + myTagLink.getAttribute("name")
+            myTagLink.href = "./index.html?tag=" + tag
             myTags.classList.add("tags")
             myTags.classList.add("sortTag")
-            myTags.setAttribute("name", tag)
+            myTags.setAttribute("aria-labelledby", tag)
             e += 1
         }
         navTag.appendChild(myPara1)
@@ -268,7 +268,7 @@ export default class Photographe {
 
     }
     
-    addLike(data) {
+    addLike() {
         const totalLikes = document.querySelector(".likes")
         let myLikes = document.querySelectorAll(".myLikes")
         
@@ -322,7 +322,6 @@ export default class Photographe {
 
     trierOpenClose() {  
         const option = document.querySelectorAll(".option")
-
         let classes = trier.classList
 
         trier.onclick = function () {
@@ -334,10 +333,8 @@ export default class Photographe {
                 triLink[2].href = "#"
                 option[0].classList.add("border")
                 option[1].classList.add("border")
-                option[2].classList.remove("border")
             } else {
                 arrow.classList.remove("rotate")
-                popularite.classList.remove("popularite")
                 triLink[0].removeAttribute("href")
                 triLink[1].removeAttribute("href")
                 triLink[2].removeAttribute("href")

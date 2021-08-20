@@ -18,4 +18,10 @@ header {
         left: 20px;
         top: 40px;
     }
+    
+}
+
+.focusLogo:focus {
+    border: 1px $color-primary solid;
+    font-size: 50px;
 }

@@ -75,6 +75,11 @@ header {
   }
 }
 
+.focusLogo:focus {
+  border: 1px #901C1C solid;
+  font-size: 50px;
+}
+
 h1 {
   position: absolute;
   right: 117px;
@@ -105,6 +110,9 @@ h1 {
   color: black;
   font-weight: 600;
 }
+.navbar:focus {
+  border: 1px #901C1C solid;
+}
 
 .tagList {
   display: flex;
@@ -133,10 +141,17 @@ h1 {
   }
 }
 
+.photographerLink:focus {
+  border: 1px #901C1C solid;
+}
+
 .tagLink {
   text-decoration: none;
   margin-bottom: 10px;
   height: 20px;
+}
+.tagLink:focus {
+  border: 1px #901C1C solid;
 }
 
 .tags {
@@ -377,6 +392,10 @@ h1 {
   .medias .tri {
     display: none;
   }
+}
+
+.articleLink:focus {
+  border: 2px #901C1C solid;
 }
 
 .dropdown {
