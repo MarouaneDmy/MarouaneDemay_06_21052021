@@ -27,6 +27,7 @@ export default class Carrousel {
 
         if (data.image !== undefined) {
             myImage.src = "../images/medias/" + data.image
+            myImage.alt = "Photo" + data.title
             carrousel.appendChild(myImage)
 
             carrousel.appendChild(myVideo)
@@ -35,6 +36,7 @@ export default class Carrousel {
         
         if (data.image === undefined) {
             myVideo.controls = "controls"
+            myVideo.setAttribute("aria-label", "Photo" + data.title)
             mySource.src = "../images/medias/" + data.video
             mySource.type = "video/mp4"
 

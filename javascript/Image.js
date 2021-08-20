@@ -33,7 +33,7 @@ export default class Image extends Media {
         myImg.alt = "Photo" + this.title
         myTitle.textContent = this.title
         myLikes.textContent = this.likes
-
+        
         photos.appendChild(myArticle)
         myArticle.appendChild(imgLink)
         imgLink.appendChild(myImg)

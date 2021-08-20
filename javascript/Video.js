@@ -29,7 +29,7 @@ export default class Video extends Media {
 
         mySource.src = "../images/medias/" + this.video
         mySource.type = "video/mp4"
-        myVid.setAttribute("aria-label", this.title)
+        myVid.setAttribute("aria-label", "Vidéo " + this.title)
         myTitle.textContent = this.title
         myLikes.textContent = this.likes
 
