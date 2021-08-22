@@ -5,6 +5,8 @@ export default class DataManager {
         return data
     }
 
+
+    // Permet de récuper le tag dans l'URL
     getPhotographerTag() {
         try {
             let url_string = (window.location.href).toLowerCase()
@@ -16,6 +18,7 @@ export default class DataManager {
         }
     }
 
+    // Permet de récuper le tag dans l'ID
     getPhotographerId() { 
         try {
             let url_string = (window.location.href).toLowerCase()

@@ -6,6 +6,8 @@ export default class MediaFactory {
         this.data = data
     }
 
+
+    // Méthode permettant de trier les médias image ou vidéo
     static createMedia(type, data) {
 
         if (type == "image") {  

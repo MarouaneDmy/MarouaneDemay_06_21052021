@@ -8,6 +8,7 @@ export default class Video extends Media {
         this.video = data.video      
     }
 
+    // Fais apparaître les vidéos liés à l'ID du photographe
     display(index) {
 
         let myArticle = document.createElement('article')

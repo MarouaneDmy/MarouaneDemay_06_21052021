@@ -14,6 +14,7 @@ export default class Carrousel {
         lightbox.style.display = "none"
     }
 
+    // Affiche le media dans le carrousel
     displayMedia(data) {
         const carrousel = document.querySelector(".carrousel-body")
         let myVideo = document.createElement('video')
@@ -21,6 +22,7 @@ export default class Carrousel {
         let mySource = document.createElement('source')
         let myTitle = document.createElement('h2')
 
+        // Supprime les éléments dans la lightbox avant d'afficher les nouveaux
         if (carrousel != "") {
             carrousel.innerHTML = "";
         }
@@ -51,9 +53,12 @@ export default class Carrousel {
         carrousel.appendChild(myTitle)
     }
 
+    // Affiche le carrousel entier en lançant sa lightbox et affichant son media
     display(data) {
         const dataMedia = document.querySelectorAll(".mediaList")
 
+
+        // Donne l'accessibilité du carrousel au clavier
         window.addEventListener("keydown", function(event){
             let elemCourant = document.activeElement;
            
@@ -111,6 +116,7 @@ export default class Carrousel {
         
         for (let i = 0; i < dataMedia.length; i++) {
 
+            // Accessiblité du carrousel au clique
             dataMedia[i].addEventListener("click", function(event){
                 const myCarrousel = new Carrousel(data)
                 myCarrousel.launchLightbox()
@@ -166,6 +172,7 @@ export default class Carrousel {
         }
         close.addEventListener("click", this.closeLightbox)  
         
+        // Ferme le carrousel avec le bouton Echape
         window.addEventListener("keydown", function(event){
             const myCarrousel = new Carrousel(data)
             if(event.key === "Escape") {

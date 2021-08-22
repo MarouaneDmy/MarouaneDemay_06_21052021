@@ -32,6 +32,7 @@ export default class Photographe {
         this.medias = []
     }
 
+    // Affichage du Photographe sur sa page
     display() {
         let myArticle = document.createElement('article')
         let myImg = document.createElement('img')
@@ -43,6 +44,7 @@ export default class Photographe {
         let myTagLink
         let myTags
     
+        // Boucle qui permet d'afficher tous les tags du photographe
         for (const [i, tag] of this.tags.entries()) {
             myTagLink = document.createElement('a')
             myTags = document.createElement('span')
@@ -81,12 +83,15 @@ export default class Photographe {
         prix.appendChild(myPrice)
     }
 
+    // Affiche tous les photographes sur la page d'accueil
     displayPhotographers(data) {
         
+        // Vide la balise pour afficher les photographes voulus 
         if (bground != "") {
             bground.innerHTML = "";
         } 
 
+        // Boucle qui permet d'afficher tous les photographes de la liste
         for (const photographe of data) {
             let myArticle = document.createElement('article')
             let myLink = document.createElement('a')
@@ -99,6 +104,7 @@ export default class Photographe {
             let myTagLink
             let myTags
     
+            // Boucle qui permet d'afficher tous les tags du photographe
             for (const [i, tag] of photographe.tags.entries()) {
                 myTagLink = document.createElement('a')
                 myTags = document.createElement('span')
@@ -136,10 +142,12 @@ export default class Photographe {
         }   
     }
 
+    // Transforme la première lettre de la chaîne de caractère en majuscule
     strUcFirst(a) {
         return (a+'').charAt(0).toUpperCase()+a.substr(1)
     }
 
+    // Filtre la liste des tags en supprimant ses doublons et l'affiche dans le header
     filterTagList() {
         let myPara1 = document.createElement('p')
         let myTags
@@ -148,6 +156,8 @@ export default class Photographe {
         const filterTagList = [...new Set(tagList)]
     
         let e = 0
+
+        // Affiche tous les tags de la tagList
         for (const tag of filterTagList) {
             myTagLink = document.createElement('a')
             myTags = document.createElement('span')
@@ -164,11 +174,13 @@ export default class Photographe {
         navTag.appendChild(myPara1)
     }
 
+    // display du Carrousel lors du initMedia pour le changement du this.medias 
     setCarrousel(){
         const carrousel = new Carrousel()
         carrousel.display(this.medias)
     }
 
+    // Affiche le media de liste media, une image ou une vidéo
     displayMedias() {
         if (photos != "") {
             photos.innerHTML = "";
@@ -179,6 +191,7 @@ export default class Photographe {
         }
     }
 
+    // Donne le type image ou vidéo au média et l'envoie à mon this.medias
     setMedia(data) {
         if (photos != "") {
             photos.innerHTML = "";
@@ -201,11 +214,13 @@ export default class Photographe {
         }
     } 
 
+    // Tri les photographes par tag 
     sortByTag(data, tag) {
         let photographerTags = document.querySelectorAll(".sortTag")
 
         for (const tag of photographerTags) {
  
+            // Permet de trier par tag en appuyant sur "Entrée"
             window.addEventListener("keydown", function(event){
                 let elemCourant = document.activeElement;
 
@@ -219,12 +234,14 @@ export default class Photographe {
             })
         }
 
+        // Tri par le tag qu'il y a dans l'url
         if(tag !== null){
             const foundPhotographerByTag = data.photographers.filter(photographers => photographers.tags.includes(tag))
             this.displayPhotographers(foundPhotographerByTag)
         }
     }
 
+    // Redirige vers la page d'accueil et tri par le tag cliqué
     tagRedirection() {
         let photographerTags = document.querySelectorAll(".sortTag")
 
@@ -236,14 +253,7 @@ export default class Photographe {
         }
     }
 
-    tagURL(data, tag) {
-        let photographerTag = tag 
-        const foundPhotographerByTag = data.photographers.filter(photographers => photographers.tags.includes(photographerTag))
-        const photographe = new Photographe(foundPhotographerByTag)
-        photographe.displayPhotographers(foundPhotographerByTag)
-        photographe.sortByTag(data)
-    }
-
+    // Tri par likes
     sortByLikes() {
 
         this.medias.sort(function(a, b) {
@@ -252,6 +262,7 @@ export default class Photographe {
 
     }
 
+    // Tri par dates
     sortByDate() {
 
         this.medias.sort(function(a, b) {
@@ -260,6 +271,7 @@ export default class Photographe {
         
     } 
 
+    // Tri par titre
     sortByTitre() {
 
         this.medias.sort(function (a, b) {
@@ -268,6 +280,7 @@ export default class Photographe {
 
     }
     
+    // Ajoute un like lorsqu'on clique
     addLike() {
         const totalLikes = document.querySelector(".likes")
         let myLikes = document.querySelectorAll(".myLikes")
@@ -292,6 +305,7 @@ export default class Photographe {
         }
     }
 
+    // Affiche la somme des likes 
     additionOfLikes(data) {
 
         let array = []
@@ -320,6 +334,7 @@ export default class Photographe {
 
     }
 
+    // Liste de tri qui s'ouvre et se ferme
     trierOpenClose() {  
         const option = document.querySelectorAll(".option")
         let classes = trier.classList
@@ -345,6 +360,7 @@ export default class Photographe {
         }
     }
 
+    // Initialise les medias pour qu'ils prennent en compte le changement de this.medias
     initMedia(){
         this.displayMedias()
         this.trierOpenClose()
@@ -352,24 +368,28 @@ export default class Photographe {
         this.setCarrousel()
     }
 
+    // Lance le tri par likes, met l'option de tri en premier et lance l'initMedia
     onClickTriPopularite() {
         this.sortByLikes()
         trier.prepend(popularite)
         this.initMedia()   
     }
 
+    // Lance le tri par date, met l'option de tri en premier et lance l'initMedia
     onClickTriDate() {
         this.sortByDate()
         trier.prepend(date)
         this.initMedia()   
     }
 
+    // Lance le tri par titre, met l'option de tri en premier et lance l'initMedia
     onClickTriTitre() {
         this.sortByTitre()
         trier.prepend(titre)
         this.initMedia()   
     }
 
+    // Evènement onClickTri lancé par évènement click
     sortMedias() {
 
         popularite.addEventListener("click", this.onClickTriPopularite.bind(this))
