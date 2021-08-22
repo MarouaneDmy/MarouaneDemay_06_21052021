@@ -20,6 +20,7 @@ export default class Modal {
     modalbg.style.display = "none"
   }
 
+  // Ajoute le nom du photographe dans la modal
   addPhotographerName() {
     let myTitle = document.createElement('h2')
     let myName = document.createElement('h2')
@@ -31,6 +32,8 @@ export default class Modal {
     modal.prepend(myTitle)   
   }
 
+
+  // Envoi les données entrées dans le console.log
   sendData() {
     sendBtn.addEventListener("click", function(){
       const modal = new Modal(this.name)
@@ -53,6 +56,7 @@ export default class Modal {
     })
   }
 
+  // Affiche la modal
   display() {
 
     this.addPhotographerName()
@@ -63,6 +67,7 @@ export default class Modal {
     // close modal event
     modalClose.addEventListener("click", this.closeModal)
 
+    // Permet de ferme la modal avec le bouton "Echap"
     window.addEventListener("keydown", function(event){
       const modal = new Modal(this.name)
       if(event.key === "Escape") {
